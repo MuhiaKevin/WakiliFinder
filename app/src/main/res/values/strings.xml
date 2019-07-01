@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Wakili Finder</string>
+    <string name="title_activity_client_login">ClientLogin</string>
+</resources>

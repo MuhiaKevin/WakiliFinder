@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "455940054326",
+    "firebase_url": "https://wakili-finder-843bd.firebaseio.com",
+    "project_id": "wakili-finder-843bd",
+    "storage_bucket": "wakili-finder-843bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455940054326:android:958d4f36e441f913",
+        "android_client_info": {
+          "package_name": "com.wakilifinder.wakilifinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455940054326-daa1c21g5620k0h8utr8pjfkr5hadbb6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wakilifinder.wakilifinder",
+            "certificate_hash": "66681cea0b63dc31b87514f8668ec352a1cea83a"
+          }
+        },
+        {
+          "client_id": "455940054326-ag2tu18cns1fdr59e4sa6gtcb6gs9620.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZbywq7nsx8eWyVZECxZrddJOFngbJJkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455940054326-ag2tu18cns1fdr59e4sa6gtcb6gs9620.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

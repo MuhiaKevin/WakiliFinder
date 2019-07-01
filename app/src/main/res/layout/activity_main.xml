@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333958"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:text="Account Selection"
+        android:textColor="#fff"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="106dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="125dp"
+        app:srcCompat="@drawable/wakili_finder_logo" />
+
+    <Button
+        android:id="@+id/clientAcc"
+        android:layout_width="295dp"
+        android:layout_height="59dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:text="Client" />
+
+    <Button
+        android:id="@+id/lawyerAcc"
+        android:layout_width="294dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/clientAcc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:text="Lawyer" />
+</RelativeLayout>
