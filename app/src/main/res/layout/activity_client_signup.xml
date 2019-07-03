@@ -13,13 +13,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-        android:text="Register Here"
+        android:text="Create Account"
         android:textColor="#fff"
         android:textSize="36sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/clientemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
@@ -34,10 +34,10 @@
         android:textColor="#fff" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/clientphoneno"
         android:layout_width="302dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText11"
+        android:layout_below="@+id/clientemail"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="58dp"
@@ -49,10 +49,10 @@
         android:textColor="#fff" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/clientpassw"
         android:layout_width="299dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText12"
+        android:layout_below="@+id/clientphoneno"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="59dp"
@@ -64,10 +64,10 @@
         android:textColor="#fff" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/clientpassw2"
         android:layout_width="299dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText13"
+        android:layout_below="@+id/clientpassw"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="60dp"
@@ -79,10 +79,10 @@
         android:textColor="#fff" />
 
     <Button
-        android:id="@+id/clientloginbtn"
+        android:id="@+id/clientlogin"
         android:layout_width="279dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText14"
+        android:layout_below="@+id/clientpassw2"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="72dp"
