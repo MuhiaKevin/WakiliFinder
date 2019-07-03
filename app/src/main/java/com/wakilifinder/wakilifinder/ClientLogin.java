@@ -21,8 +21,8 @@ public class ClientLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(),ClientSignup.class);
-                startActivity(i);
+                Intent intent = new Intent(getApplicationContext(),ClientSignup.class);
+                startActivity(intent);
             }
         });
 
