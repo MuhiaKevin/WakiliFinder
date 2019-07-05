@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ClientSignup extends AppCompatActivity {
 
-    private EditText emailfield, passwfield;
+    private EditText emailfield, passwfield, phoneno,confirmpass;
     private Button createAcc;
 
     public FirebaseAuth mAuth;
@@ -30,18 +30,23 @@ public class ClientSignup extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
+        phoneno = findViewById(R.id.phonefield);
         emailfield = findViewById(R.id.emailfield);
+        confirmpass = findViewById(R.id.confirmfield);
         passwfield = findViewById(R.id.passwfield);
         createAcc = findViewById(R.id.clientlogin);
+
 
         createAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String email = emailfield.getText().toString();
-                
                 // password must have a length of 6 alphanumeric characters
                 final String password = passwfield.getText().toString();
+                final String phone = phoneno.getText().toString();
+                final String confirmpassw = confirmpass.getText().toString();
+
+                final Userclient user = new Userclient(email,password,phone);
 
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(ClientSignup.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -54,7 +59,7 @@ public class ClientSignup extends AppCompatActivity {
                         else{
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(user_id);
-                            current_user_db.setValue(user_id);
+                            current_user_db.setValue(user);
 
                         }
                     }
