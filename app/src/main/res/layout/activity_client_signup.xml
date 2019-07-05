@@ -19,7 +19,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/clientemail"
+        android:id="@+id/emailfield"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
@@ -34,10 +34,10 @@
         android:textColor="#fff" />
 
     <EditText
-        android:id="@+id/clientphoneno"
+        android:id="@+id/phonefield"
         android:layout_width="302dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/clientemail"
+        android:layout_below="@+id/emailfield"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="58dp"
@@ -49,10 +49,10 @@
         android:textColor="#fff" />
 
     <EditText
-        android:id="@+id/clientpassw"
+        android:id="@+id/passwfield"
         android:layout_width="299dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/clientphoneno"
+        android:layout_below="@+id/phonefield"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="59dp"
@@ -64,10 +64,10 @@
         android:textColor="#fff" />
 
     <EditText
-        android:id="@+id/clientpassw2"
+        android:id="@+id/confirmfield"
         android:layout_width="299dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/clientpassw"
+        android:layout_below="@+id/passwfield"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="60dp"
@@ -82,7 +82,7 @@
         android:id="@+id/clientlogin"
         android:layout_width="279dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/clientpassw2"
+        android:layout_below="@+id/confirmfield"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="72dp"

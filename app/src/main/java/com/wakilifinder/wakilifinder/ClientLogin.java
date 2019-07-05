@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ClientLogin extends AppCompatActivity {
 
     private Button signupbtn, loginbtn;
-    private FirebaseAuth mauth;
     private EditText emailfield, passwfield;
     public FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -67,7 +66,7 @@ public class ClientLogin extends AppCompatActivity {
             }
         });
 
-        
+
     }
 
     @Override
