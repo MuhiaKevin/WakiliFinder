@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button clientacc;
+    private Button clientacc,lawyeracc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         clientacc = (Button) findViewById(R.id.clientAcc);
+        lawyeracc = findViewById(R.id.lawyerAcc);
 
         clientacc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,6 +26,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        lawyeracc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),LawyerLogin.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
