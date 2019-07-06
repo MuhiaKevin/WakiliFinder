@@ -76,15 +76,22 @@ public class ClientLogin extends AppCompatActivity {
     }
 
     private void startSignIn() {
-
         String email = this.emailfield.getText().toString();
         String password = this.passwfield.getText().toString();
 
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+        if (email.isEmpty()) {
+            emailfield.setError("Required! ");
+            emailfield.requestFocus();
+            return;
 
-            Toast.makeText(ClientLogin.this, "Fields are empty", Toast.LENGTH_SHORT).show();
+        }
 
-        } else {
+        if (password.isEmpty()) {
+            passwfield.setError("Required!");
+            passwfield.requestFocus();
+            return;
+        }
+        else {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
