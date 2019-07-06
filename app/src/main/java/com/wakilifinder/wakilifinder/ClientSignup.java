@@ -3,6 +3,7 @@ package com.wakilifinder.wakilifinder;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +46,38 @@ public class ClientSignup extends AppCompatActivity {
                 final String password = passwfield.getText().toString();
                 final String phone = phoneno.getText().toString();
                 final String confirmpassw = confirmpass.getText().toString();
+
+
+                if (email.isEmpty()) {
+                    emailfield.setError("Required! ");
+                    emailfield.requestFocus();
+                    return;
+                }
+                if (phone.isEmpty()) {
+                    phoneno.setError("Required!");
+                    phoneno.requestFocus();
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    passwfield.setError("Required!");
+                    passwfield.requestFocus();
+                    return;
+                }
+
+                if (confirmpassw.isEmpty()) {
+                    confirmpass.setError("Required!");
+                    confirmpass.requestFocus();
+                    return;
+                }
+
+
+                if(!TextUtils.equals(password,confirmpassw)){
+                    confirmpass.setError("Passwords don't match!");
+                    confirmpass.requestFocus();
+                    return;
+                }
+
 
                 final Userclient user = new Userclient(email,password,phone);
 
