@@ -2,6 +2,8 @@ package com.wakilifinder.wakilifinder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -82,11 +84,18 @@ public class ClientSignup extends AppCompatActivity {
 
                 final Userclient user = new Userclient(email,password,phone);
 
+                final ProgressDialog progressDialog = new ProgressDialog(ClientSignup.this);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Registering...");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+                progressDialog.show();
+
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(ClientSignup.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(!task.isSuccessful()){
+                            progressDialog.dismiss();
                             Toast.makeText(ClientSignup.this, "Sign up error", Toast.LENGTH_SHORT).show();
                         }
 
@@ -94,7 +103,7 @@ public class ClientSignup extends AppCompatActivity {
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(user_id);
                             current_user_db.setValue(user);
-
+                            progressDialog.dismiss();
                         }
                     }
                 });
