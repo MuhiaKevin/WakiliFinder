@@ -2,6 +2,8 @@ package com.wakilifinder.wakilifinder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LawyerLogin extends AppCompatActivity {
 
     private Button lawyerSignupbtn, lawyerloginBtn;
-    private EditText emailfield, passwfield;
+    private EditText p105numberfield, passwfield;
     public FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -32,7 +34,7 @@ public class LawyerLogin extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        emailfield = findViewById(R.id.emailLogin);
+        p105numberfield = findViewById(R.id.p105numLogin);
         passwfield = findViewById(R.id.passwLogin);
 
         lawyerloginBtn = findViewById(R.id.lawyerSignupbtn1);
@@ -81,13 +83,13 @@ public class LawyerLogin extends AppCompatActivity {
     //
 
     private void startSignIn() {
-        String email = this.emailfield.getText().toString();
+        String email = this.p105numberfield.getText().toString();
         String password = this.passwfield.getText().toString();
 
         // validate email and password
         if (email.isEmpty()) {
-            emailfield.setError("Required! ");
-            emailfield.requestFocus();
+            p105numberfield.setError("Required! ");
+            p105numberfield.requestFocus();
             return;
 
         }
@@ -99,10 +101,18 @@ public class LawyerLogin extends AppCompatActivity {
         }
         // sing in user when everything is clear
         else {
+
+            final ProgressDialog progressDialog = new ProgressDialog(LawyerLogin.this);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Authenticating...");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+            progressDialog.show();
+
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
+                        progressDialog.dismiss();
                         Toast.makeText(LawyerLogin.this, "Sign in problem", Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -33,7 +33,7 @@
         app:srcCompat="@drawable/lawyer_icon3" />
 
     <EditText
-        android:id="@+id/emailLogin"
+        android:id="@+id/p105numLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView2"
@@ -43,7 +43,7 @@
         android:layout_marginTop="31dp"
         android:layout_marginEnd="47dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="P105 Number"
         android:inputType="textEmailAddress"
         android:textColor="#fff" />
 
@@ -51,7 +51,7 @@
         android:id="@+id/passwLogin"
         android:layout_width="324dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/emailLogin"
+        android:layout_below="@+id/p105numLogin"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="45dp"

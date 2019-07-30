@@ -33,7 +33,7 @@ public class ClientLogin extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        emailfield = findViewById(R.id.emailLogin);
+        emailfield = findViewById(R.id.p105numLogin);
         passwfield = findViewById(R.id.passwLogin);
 
         clientSignupbtn = findViewById(R.id.clientSignupbtn);

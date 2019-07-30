@@ -35,7 +35,7 @@
         app:srcCompat="@drawable/login" />
 
     <EditText
-        android:id="@+id/emailLogin"
+        android:id="@+id/p105numLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView2"
@@ -53,7 +53,7 @@
         android:id="@+id/passwLogin"
         android:layout_width="324dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/emailLogin"
+        android:layout_below="@+id/p105numLogin"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="45dp"
