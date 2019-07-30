@@ -79,7 +79,7 @@
         android:textColor="#fff" />
 
     <Button
-        android:id="@+id/clientlogin"
+        android:id="@+id/lawyerLogin"
         android:layout_width="279dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/confirmfield"

@@ -22,7 +22,8 @@
         <activity android:name=".ClientLogin" />
         <activity android:name=".ClientSignup" />
         <activity android:name=".HomePage" />
-        <activity android:name=".LawyerLogin"></activity>
+        <activity android:name=".LawyerLogin" />
+        <activity android:name=".LawyerSignup1"></activity>
     </application>
 
 </manifest>

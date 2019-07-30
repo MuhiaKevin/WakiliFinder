@@ -35,13 +35,14 @@ public class ClientSignup extends AppCompatActivity {
         emailfield = findViewById(R.id.emailfield);
         confirmpass = findViewById(R.id.confirmfield);
         passwfield = findViewById(R.id.passwfield);
-        createAcc = findViewById(R.id.clientlogin);
+        createAcc = findViewById(R.id.lawyerLogin);
 
 
         createAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String email = emailfield.getText().toString();
+
                 // password must have a length of 6 alphanumeric characters
                 final String password = passwfield.getText().toString();
                 final String phone = phoneno.getText().toString();

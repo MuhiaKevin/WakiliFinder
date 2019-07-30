@@ -1,16 +1,13 @@
 package com.wakilifinder.wakilifinder;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.os.Bundle;
+import android.view.View;
+import android.content.Intent;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,10 +16,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ClientLogin extends AppCompatActivity {
 
-    private Button signupbtn, loginbtn;
+    private Button clientSignupbtn, lawyerLoginBtn;
     private EditText emailfield, passwfield;
     public FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +34,8 @@ public class ClientLogin extends AppCompatActivity {
         emailfield = findViewById(R.id.emailLogin);
         passwfield = findViewById(R.id.passwLogin);
 
-        signupbtn = findViewById(R.id.clientSignupbtn);
-        loginbtn = findViewById(R.id.clientlogin);
+        clientSignupbtn = findViewById(R.id.clientSignupbtn);
+        lawyerLoginBtn = findViewById(R.id.lawyerLogin);
 
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -49,15 +48,17 @@ public class ClientLogin extends AppCompatActivity {
             }
         };
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+
+        // lawyer login when key pressed
+        lawyerLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startSignIn();
             }
         });
 
-
-        signupbtn.setOnClickListener(new View.OnClickListener() {
+        // open signup activity
+        clientSignupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -65,7 +66,6 @@ public class ClientLogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
     }
 
@@ -75,10 +75,14 @@ public class ClientLogin extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+
+    //
+
     private void startSignIn() {
         String email = this.emailfield.getText().toString();
         String password = this.passwfield.getText().toString();
 
+        // validate email and password
         if (email.isEmpty()) {
             emailfield.setError("Required! ");
             emailfield.requestFocus();
@@ -91,6 +95,7 @@ public class ClientLogin extends AppCompatActivity {
             passwfield.requestFocus();
             return;
         }
+        // sing in user when everything is clear
         else {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -103,5 +108,6 @@ public class ClientLogin extends AppCompatActivity {
         }
 
     }
+
 }
 
