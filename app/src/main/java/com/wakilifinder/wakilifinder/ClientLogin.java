@@ -2,6 +2,8 @@ package com.wakilifinder.wakilifinder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -97,10 +99,17 @@ public class ClientLogin extends AppCompatActivity {
         }
         // sing in user when everything is clear
         else {
+            final ProgressDialog progressDialog = new ProgressDialog(ClientLogin.this);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Authenticating...");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+            progressDialog.show();
+
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
+                        progressDialog.dismiss();
                         Toast.makeText(ClientLogin.this, "Sign in problem", Toast.LENGTH_SHORT).show();
                     }
                 }
