@@ -15,10 +15,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="47dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="Account Selection"
         android:textColor="#fff"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textSize="36sp" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -34,17 +34,17 @@
 
     <Button
         android:id="@+id/clientAcc"
-        android:layout_width="295dp"
-        android:layout_height="59dp"
+        android:layout_width="331dp"
+        android:layout_height="61dp"
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="49dp"
         android:text="Client" />
 
     <Button
         android:id="@+id/lawyerAcc"
-        android:layout_width="294dp"
-        android:layout_height="63dp"
+        android:layout_width="332dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/clientAcc"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"

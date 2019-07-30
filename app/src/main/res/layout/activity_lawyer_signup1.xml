@@ -1,9 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#333958"
     tools:context=".LawyerSignup1">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="Create Account"
+        android:textColor="#fff"
+        android:textSize="36sp" />
+
+    <EditText
+        android:id="@+id/lawyeremailfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/p105number"
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lawyeremailfield"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="62dp"
+        android:ems="10"
+        android:hint="P.105 number "
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/practiceNumber"
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/p105number"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="62dp"
+        android:ems="10"
+        android:hint="Pratice Number "
+        android:textColor="#fff" />
+
+
+    <EditText
+        android:id="@+id/passwfield"
+        android:layout_width="299dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/practiceNumber"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="62dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/confirmfield"
+        android:layout_width="299dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwfield"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="62dp"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/lawyerSignupbtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_below="@+id/confirmfield"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="60dp"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>

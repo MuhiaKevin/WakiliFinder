@@ -65,7 +65,7 @@
         android:textColor="#fff" />
 
     <Button
-        android:id="@+id/lawyerLogin"
+        android:id="@+id/lawyerSignupbtn1"
         android:layout_width="347dp"
         android:layout_height="58dp"
         android:layout_below="@+id/passwLogin"
@@ -82,7 +82,7 @@
         android:id="@+id/clientSignupbtn"
         android:layout_width="178dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lawyerLogin"
+        android:layout_below="@+id/lawyerSignupbtn1"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="117dp"
