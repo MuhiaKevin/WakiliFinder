@@ -35,7 +35,7 @@ public class LawyerLogin extends AppCompatActivity {
         emailfield = findViewById(R.id.emailLogin);
         passwfield = findViewById(R.id.passwLogin);
 
-        lawyerloginBtn = findViewById(R.id.lawyerLogin);
+        lawyerloginBtn = findViewById(R.id.lawyerSignupbtn1);
         lawyerSignupbtn = findViewById(R.id.lawyerSignupbtn);
 
 

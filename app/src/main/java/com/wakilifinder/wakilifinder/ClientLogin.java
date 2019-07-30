@@ -35,7 +35,7 @@ public class ClientLogin extends AppCompatActivity {
         passwfield = findViewById(R.id.passwLogin);
 
         clientSignupbtn = findViewById(R.id.clientSignupbtn);
-        lawyerLoginBtn = findViewById(R.id.lawyerLogin);
+        lawyerLoginBtn = findViewById(R.id.lawyerSignupbtn1);
 
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {

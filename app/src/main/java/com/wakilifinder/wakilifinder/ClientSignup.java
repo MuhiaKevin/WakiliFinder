@@ -31,11 +31,11 @@ public class ClientSignup extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        phoneno = findViewById(R.id.phonefield);
-        emailfield = findViewById(R.id.emailfield);
+        phoneno = findViewById(R.id.p105number);
+        emailfield = findViewById(R.id.lawyeremailfield);
         confirmpass = findViewById(R.id.confirmfield);
         passwfield = findViewById(R.id.passwfield);
-        createAcc = findViewById(R.id.lawyerLogin);
+        createAcc = findViewById(R.id.lawyerSignupbtn1);
 
 
         createAcc.setOnClickListener(new View.OnClickListener() {
