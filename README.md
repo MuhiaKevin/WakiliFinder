@@ -9,3 +9,5 @@ A simple Android application that allows you to get access to a lawyer near your
 * [ ] make service that search lawyer by p105 number and return if lawyer is legitimate
 * [ ] pass data between signup1 activity and signup2
 * [ ] password validation to check if it is greater than 6 characters
+* [ ] fix signup activity loggin in to main screen
+* [ ] bring google maps after user creates account
