@@ -31,11 +31,11 @@
 
             <EditText
                 android:id="@+id/lawyeremailfield"
-                android:layout_width="match_parent"
+                android:layout_width="302dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="41dp"
-                android:layout_marginEnd="64dp"
+                android:layout_marginStart="58dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="62dp"
                 android:ems="10"
                 android:hint="Email Address"
                 android:inputType="textEmailAddress"
@@ -92,7 +92,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:text="Set Location of your office"
                 android:textColor="#BEBEBE"
                 android:textSize="19sp" />
@@ -113,6 +113,7 @@
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="52dp"
                 android:layout_marginEnd="60dp"
+                android:layout_marginBottom="20dp"
                 android:text="Create Account"
                 android:textAllCaps="false"
                 android:textSize="18sp" />

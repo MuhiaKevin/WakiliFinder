@@ -1,8 +1,12 @@
 package com.wakilifinder.wakilifinder;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.app.ProgressDialog;
 import android.text.TextUtils;
@@ -18,6 +22,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,11 +51,17 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
 
     private static final String TAG = "MUNYAMUNYA";
 
+    private Location location;
+    private GoogleApiClient googleApiClient;
+    private LocationRequest locationRequest;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lawyer_signup2_maps);
+        setContentView(R.layout.activity_lawyer_signup);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -158,22 +175,50 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
 
+    /*
+    *   TODO
+    *
+    *   1. Zoom camera to Kenya
+    *   2. Allow user to set marker
+    *   3. get Marker location
+    *
+    *
+    * */
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//        Add a marker in Sydney and move the camera
+//        LatLng sydney = new LatLng(-34, 151);
+        LatLng nairobi = new LatLng(-2, 37);
+
+        mMap.addMarker(new MarkerOptions().position(nairobi).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(nairobi));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
+
+
+//        if (ActivityCompat.checkSelfPermission(this,
+//                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                &&  ActivityCompat.checkSelfPermission(this,
+//                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            return;
+//        }
+//
+//        location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+//
+//        if (location != null) {
+//            Log.i(TAG,"Latitude : " + location.getLatitude() + "\nLongitude : " + location.getLongitude());
+//        }
+
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
     }
-
 
 
     @Override

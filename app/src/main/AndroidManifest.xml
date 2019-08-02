@@ -13,6 +13,9 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 
     <application
         android:allowBackup="true"
@@ -33,7 +36,6 @@
         <activity android:name=".ClientSignup" />
         <activity android:name=".HomePage" />
         <activity android:name=".LawyerLogin" />
-        <activity android:name=".LawyerSignup1" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
