@@ -31,12 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".ClientLogin" />
         <activity android:name=".ClientSignup" />
-        <activity android:name=".HomePage" />
+        <activity android:name=".HomeClient" />
         <activity android:name=".LawyerLogin" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -53,7 +51,7 @@
         <activity
             android:name=".LawyerSignup"
             android:label="@string/title_activity_lawyer_signup2_maps" />
-
+        <activity android:name=".HomeClient2"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package com.wakilifinder.wakilifinder;
 
+// model for lawyer when sending to firebase database
+
 public class UserLawyer {
 
     public String email;
