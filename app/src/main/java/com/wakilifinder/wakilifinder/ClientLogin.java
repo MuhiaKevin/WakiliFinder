@@ -45,7 +45,7 @@ public class ClientLogin extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
 
-                    startActivity(new Intent(ClientLogin.this, HomePage.class));
+                    startActivity(new Intent(ClientLogin.this, HomeClient.class));
                 }
             }
         };

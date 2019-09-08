@@ -1,5 +1,7 @@
 package com.wakilifinder.wakilifinder;
 
+//model for client when sending to firebase database
+
 public class Userclient {
     public String email;
     public String password;
