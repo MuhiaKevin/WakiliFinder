@@ -45,7 +45,6 @@ public class LawyerSignup extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     public FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
-    private static String imageurl;
     private static final String TAG = "MUNYAMUNYA";
 
 
@@ -123,52 +122,12 @@ public class LawyerSignup extends AppCompatActivity {
                     return;
                 }
 
-                if(resultUri != null){
-                    final StorageReference filepath = FirebaseStorage.getInstance().getReference().child("Users").child("Lawyers").child(email);
-                    Bitmap bitmap = null;
-                    try {
-                        bitmap = MediaStore.Images.Media.getBitmap(getApplication().getContentResolver(),resultUri);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
-                    byte[] data = baos.toByteArray();
-
-                    filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-//                                    DatabaseReference imageStore = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                    HashMap<String,String> hashMap = new HashMap<>();
-                                    hashMap.put("imageurl", String.valueOf(uri));
-
-                                    imageurl = String.valueOf(uri);
-//                                     imageStore.setValue(hashMap);
-                                }
-                            });
-                        }
-                    });
-
-
-                }
-
-                else{
-                    // show message when image not entered
-
-
-                    //finish();
-                    Toast.makeText(LawyerSignup.this, "No image Selected", Toast.LENGTH_SHORT).show();
-
-                }
 
 
 
-                final UserLawyer user = new UserLawyer("PLACEHOLDER",email,p105strng,practicenumstrng,password);
+
+//                final UserLawyer user = new UserLawyer(imageurl,email,p105strng,practicenumstrng,password);
+//                Log.d("ADebugTag", "Value: " + imageurl);
 
                 final ProgressDialog progressDialog = new ProgressDialog(LawyerSignup.this);
                 progressDialog.setIndeterminate(true);
@@ -188,9 +147,56 @@ public class LawyerSignup extends AppCompatActivity {
 
                             else{
 
+                                if(resultUri != null){
+                                    final StorageReference filepath = FirebaseStorage.getInstance().getReference().child("Users").child("Lawyers").child(email);
+                                    Bitmap bitmap = null;
+                                    try {
+                                        bitmap = MediaStore.Images.Media.getBitmap(getApplication().getContentResolver(),resultUri);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
+                                    byte[] data = baos.toByteArray();
+
+                                    filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                            filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                @Override
+                                                public void onSuccess(Uri uri) {
+                                                    DatabaseReference imageStore = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                    HashMap<String,String> hashMap = new HashMap<>();
+
+                                                    hashMap.put("imageurl", String.valueOf(uri));
+                                                    hashMap.put("email", String.valueOf(email));
+                                                    hashMap.put("p105number", String.valueOf(p105strng));
+                                                    hashMap.put("practicenumber", String.valueOf(practicenumstrng));
+                                                    hashMap.put("password", String.valueOf(password));
+
+                                                    imageStore.setValue(hashMap);
+                                                }
+                                            });
+                                        }
+                                    });
+
+
+                                }
+
+                                else{
+                                    // show message when image not entered
+
+
+                                    //finish();
+                                    Toast.makeText(LawyerSignup.this, "No image Selected", Toast.LENGTH_SHORT).show();
+
+                                }
+
 //                                String user_id = mAuth.getCurrentUser().getUid();
-                                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                current_user_db.setValue(user);
+//                                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//                                current_user_db.setValue(user);
 
                             progressDialog.dismiss();
                         }
