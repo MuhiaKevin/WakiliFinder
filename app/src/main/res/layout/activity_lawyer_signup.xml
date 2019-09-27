@@ -23,11 +23,30 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="17dp"
+                android:text="Click here to set picture"
+                android:textColor="#fff"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:id="@+id/profileImage"
+                android:src="@drawable/ic_default_user"/>
+
+
 
             <EditText
                 android:id="@+id/lawyeremailfield"
@@ -88,23 +107,6 @@
                 android:inputType="textPassword"
                 android:textColor="#fff" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Set Location of your office"
-                android:textColor="#BEBEBE"
-                android:textSize="19sp" />
-
-            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/map"
-                android:layout_marginTop="25dp"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="400dp"
-                android:layout_height="513dp"
-                tools:context=".LawyerSignup1" />
 
             <Button
                 android:id="@+id/lawyerSignupbtn1"
@@ -114,7 +116,7 @@
                 android:layout_marginTop="52dp"
                 android:layout_marginEnd="60dp"
                 android:layout_marginBottom="20dp"
-                android:text="Create Account"
+                android:text="Confirm"
                 android:textAllCaps="false"
                 android:textSize="18sp" />
 

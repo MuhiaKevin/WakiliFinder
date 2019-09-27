@@ -1,60 +1,52 @@
 package com.wakilifinder.wakilifinder;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Bundle;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-
-
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+public class LawyerSignup extends AppCompatActivity {
 
-public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback {
-
-    private GoogleMap mMap;
 
     private EditText emailfield, passwfield, p105numberfield,praticenumberfield,confirmpassfield;
     private Button createAccbtn;
-
+    private ImageView mProfileImage;
+    private Uri resultUri ;
+    private DatabaseReference mDatabaseRef;
     public FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
-
+    private static String imageurl;
     private static final String TAG = "MUNYAMUNYA";
-
-    private Location location;
-    private GoogleApiClient googleApiClient;
-    private LocationRequest locationRequest;
-
 
 
 
@@ -62,11 +54,7 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lawyer_signup);
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        Log.i(TAG,"STARTED APP");
 
         emailfield = findViewById(R.id.lawyeremailfield);
         p105numberfield = findViewById(R.id.p105number);
@@ -74,6 +62,18 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
         passwfield = findViewById(R.id.passwfield);
         confirmpassfield = findViewById(R.id.confirmfield);
         createAccbtn = findViewById(R.id.lawyerSignupbtn1);
+        mProfileImage = findViewById(R.id.profileImage);
+
+
+        mProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, 1);
+            }
+        });
+
 
         createAccbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,12 +123,52 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
                     return;
                 }
 
-                // TODO
-                // validating legitimacy of lawyer is done around here
+                if(resultUri != null){
+                    final StorageReference filepath = FirebaseStorage.getInstance().getReference().child("Users").child("Lawyers").child(email);
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(getApplication().getContentResolver(),resultUri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                Log.i(TAG,"STARTING PROGRESS DIALOG");
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
+                    byte[] data = baos.toByteArray();
 
-                final UserLawyer user = new UserLawyer(email,p105strng,practicenumstrng,password);
+                    filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+//                                    DatabaseReference imageStore = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                    HashMap<String,String> hashMap = new HashMap<>();
+                                    hashMap.put("imageurl", String.valueOf(uri));
+
+                                    imageurl = String.valueOf(uri);
+//                                     imageStore.setValue(hashMap);
+                                }
+                            });
+                        }
+                    });
+
+
+                }
+
+                else{
+                    // show message when image not entered
+
+
+                    //finish();
+                    Toast.makeText(LawyerSignup.this, "No image Selected", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+
+                final UserLawyer user = new UserLawyer("PLACEHOLDER",email,p105strng,practicenumstrng,password);
 
                 final ProgressDialog progressDialog = new ProgressDialog(LawyerSignup.this);
                 progressDialog.setIndeterminate(true);
@@ -136,7 +176,6 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
                 progressDialog.show();
 
-                Log.i(TAG,"CREATING USER");
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(LawyerSignup.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -147,10 +186,12 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
                             Toast.makeText(LawyerSignup.this, "Sign up error", Toast.LENGTH_SHORT).show();
                         }
 
-                        else{
-//                          String user_id = mAuth.getCurrentUser().getUid();
-                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                            current_user_db.setValue(user);
+                            else{
+
+//                                String user_id = mAuth.getCurrentUser().getUid();
+                                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                current_user_db.setValue(user);
+
                             progressDialog.dismiss();
                         }
                     }
@@ -160,60 +201,10 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
         });
 
 
-
-
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
 
-    /*
-    *   TODO
-    *
-    *   1. Zoom camera to Kenya
-    *   2. Allow user to set marker
-    *   3. get Marker location
-    *
-    *
-    * */
-
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-//        Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-        LatLng nairobi = new LatLng(-2, 37);
-
-        mMap.addMarker(new MarkerOptions().position(nairobi).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(nairobi));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
-
-
-//        if (ActivityCompat.checkSelfPermission(this,
-//                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-//                &&  ActivityCompat.checkSelfPermission(this,
-//                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            return;
-//        }
-//
-//        location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-//
-//        if (location != null) {
-//            Log.i(TAG,"Latitude : " + location.getLatitude() + "\nLongitude : " + location.getLongitude());
-//        }
-
-
-    }
 
     @Override
     protected void onStart() {
@@ -221,9 +212,22 @@ public class LawyerSignup extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+
     @Override
     protected void onStop() {
         super.onStop();
         FirebaseAuth.getInstance().removeAuthStateListener(firebaseAuthListener);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+            final Uri imageUri = data.getData();
+            resultUri = imageUri;
+            mProfileImage.setImageURI(resultUri);
+        }
+    }
+
 }
