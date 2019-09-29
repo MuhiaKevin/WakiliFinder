@@ -1,10 +1,13 @@
 package com.wakilifinder.wakilifinder;
 
-public class DatasetFire {
-    public String email, p105number,password, practicenumber ;
+import android.widget.ImageView;
 
-    public DatasetFire(String email, String p105number, String password, String practicenumber) {
+public class DatasetFire {
+    public String email, imageurl, p105number,password, practicenumber ;
+
+    public DatasetFire(String email, String imageurl, String p105number, String password, String practicenumber) {
         this.email = email;
+        this.imageurl = imageurl;
         this.p105number = p105number;
         this.password = password;
         this.practicenumber = practicenumber;
@@ -45,4 +48,14 @@ public class DatasetFire {
     public void setPracticenumber(String practicenumber) {
         this.practicenumber = practicenumber;
     }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+
 }

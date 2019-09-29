@@ -11,10 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -53,6 +55,14 @@ public class HomeClient extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<DatasetFire, FirebaseViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull FirebaseViewHolder firebaseViewHolder, int i, @NonNull final DatasetFire datasetFire) {
+
+//                Picasso.get().load(datasetFire.getImageurl()).fit().centerCrop().into(firebaseViewHolder.imageurl);
+                Glide
+                        .with(getApplicationContext())
+                        .load(datasetFire.getImageurl())
+                        .centerCrop()
+                        .into(firebaseViewHolder.imageurl);
+
                 firebaseViewHolder.email.setText(datasetFire.getEmail());
                 firebaseViewHolder.p105number.setText(datasetFire.getP105number());
                 firebaseViewHolder.password.setText(datasetFire.getPassword());

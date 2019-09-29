@@ -124,11 +124,6 @@ public class LawyerSignup extends AppCompatActivity {
 
 
 
-
-
-//                final UserLawyer user = new UserLawyer(imageurl,email,p105strng,practicenumstrng,password);
-//                Log.d("ADebugTag", "Value: " + imageurl);
-
                 final ProgressDialog progressDialog = new ProgressDialog(LawyerSignup.this);
                 progressDialog.setIndeterminate(true);
                 progressDialog.setMessage("Registering...");
@@ -186,17 +181,10 @@ public class LawyerSignup extends AppCompatActivity {
                                 }
 
                                 else{
-                                    // show message when image not entered
-
-
                                     //finish();
                                     Toast.makeText(LawyerSignup.this, "No image Selected", Toast.LENGTH_SHORT).show();
-
                                 }
 
-//                                String user_id = mAuth.getCurrentUser().getUid();
-//                                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-//                                current_user_db.setValue(user);
 
                             progressDialog.dismiss();
                         }
