@@ -14,9 +14,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-        android:text="Create Account"
+        android:text="Wakili Finder"
         android:textColor="#fff"
-        android:textSize="36sp" />
+        android:fontFamily="cursive"
+        android:textSize="50sp" />
 
     <ScrollView
         android:layout_marginTop="90dp"
@@ -29,6 +30,7 @@
             android:layout_height="fill_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,12 +39,12 @@
                 android:layout_marginTop="17dp"
                 android:text="Click here to set picture"
                 android:textColor="#fff"
-                android:textSize="17sp" />
+                android:textSize="20sp" />
 
             <ImageView
-                android:layout_marginTop="20dp"
-                android:layout_width="100sp"
-                android:layout_height="100sp"
+                android:layout_marginTop="30dp"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
                 android:id="@+id/profileImage"
                 android:src="@drawable/ic_default_user"/>
 
@@ -116,9 +118,9 @@
                 android:layout_marginTop="52dp"
                 android:layout_marginEnd="60dp"
                 android:layout_marginBottom="20dp"
-                android:text="Confirm"
+                android:text="Create Your Account"
                 android:textAllCaps="false"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
     </ScrollView>
