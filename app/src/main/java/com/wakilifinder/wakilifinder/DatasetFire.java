@@ -26,7 +26,7 @@ public class DatasetFire {
     }
 
     public String getP105number() {
-        return p105number;
+        return "P.105/"+ p105number;
     }
 
     public void setP105number(String p105number) {
@@ -42,7 +42,7 @@ public class DatasetFire {
     }
 
     public String getPracticenumber() {
-        return practicenumber;
+        return "Practice Number  "+ practicenumber;
     }
 
     public void setPracticenumber(String practicenumber) {

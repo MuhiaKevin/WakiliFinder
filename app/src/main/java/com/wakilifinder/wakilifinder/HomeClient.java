@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +28,7 @@ public class HomeClient extends AppCompatActivity {
     private FirebaseRecyclerOptions<DatasetFire> options;
     private FirebaseRecyclerAdapter<DatasetFire, FirebaseViewHolder> adapter;
     private DatabaseReference databaseReference;
+
 
     @Override
     protected void onStart() {
@@ -60,7 +62,7 @@ public class HomeClient extends AppCompatActivity {
                 Glide
                         .with(getApplicationContext())
                         .load(datasetFire.getImageurl())
-                        .centerCrop()
+                        .apply(new RequestOptions().override(1000, 400))
                         .into(firebaseViewHolder.imageurl);
 
                 firebaseViewHolder.email.setText(datasetFire.getEmail());

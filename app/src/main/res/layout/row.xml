@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="350dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="10dp"
     app:cardCornerRadius="10dp"
@@ -13,10 +13,8 @@
         android:orientation="vertical">
 
 
-
-
-
         <ImageView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/profileImage"
@@ -27,7 +25,7 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textAlignment="center"
             android:text="Email" />
 
@@ -37,7 +35,7 @@
             android:id="@+id/p105number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textAlignment="center"
             android:text="P105 nunber" />
 
@@ -46,7 +44,7 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textAlignment="center"
             android:text="Password" />
         <TextView
@@ -54,7 +52,7 @@
             android:id="@+id/practiceNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textAlignment="center"
             android:text="Practice Number" />
 

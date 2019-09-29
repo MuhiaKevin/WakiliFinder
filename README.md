@@ -7,8 +7,8 @@ A simple Android application that allows you to get access to a lawyer near your
 * [x] Change android theme
 * [ ] Add coloring on things like buttons to make it look aesthetic
 * [ ] make service that search lawyer by p105 number and return if lawyer is legitimate
-* [ ] password validation to check if it is greater than 6 characters
+* [x] password validation to check if it is greater than 6 characters
 * [x] add splash activity
 * [x] Change project title
-* [ ] Ensure lawyer legitimacy
 * [ ] Show lawyer availability
+* [ ] Add table showing lawyer stats[like this](https://online.lsk.or.ke/searchDetails/eyJpdiI6Imp6M1gyYlwvd1wvdWYzNGEwaFU4dEtVQT09IiwidmFsdWUiOiJncXdwc1BTUEk3c3ZWVlozOWF5STE3OEtqek02SWVublJMY1ZlSWxXaGpnPSIsIm1hYyI6ImIyZDU3MGFjNzJhNzNkYWY1OTZhZmRlMDc0MjE2YjFiZTdjNjljY2IyMWQ0ZjNiNjNlNWExMjEwOGYwZTRjZDMifQ==)
