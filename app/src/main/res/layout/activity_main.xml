@@ -35,8 +35,12 @@
     <Button
         android:id="@+id/clientAcc"
         android:layout_width="331dp"
+        android:textColor="#FFFF"
+        android:background="@drawable/custom_button_login"
         android:layout_height="61dp"
+        android:textAllCaps="false"
         android:layout_below="@+id/imageView2"
+        android:textSize="18dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
         android:text="Client" />
@@ -44,9 +48,13 @@
     <Button
         android:id="@+id/lawyerAcc"
         android:layout_width="332dp"
+        android:textColor="#FFFF"
+        android:background="@drawable/custom_button_signup"
         android:layout_height="60dp"
         android:layout_below="@+id/clientAcc"
         android:layout_centerHorizontal="true"
+        android:textSize="18dp"
         android:layout_marginTop="21dp"
+        android:textAllCaps="false"
         android:text="Lawyer" />
 </RelativeLayout>

@@ -20,10 +20,12 @@
         android:textSize="50sp" />
 
     <ScrollView
-        android:layout_marginTop="90dp"
+        android:id="@+id/scrollView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView">
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="90dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -42,12 +44,11 @@
                 android:textSize="20sp" />
 
             <ImageView
-                android:layout_marginTop="30dp"
+                android:id="@+id/profileImage"
                 android:layout_width="200sp"
                 android:layout_height="200sp"
-                android:id="@+id/profileImage"
-                android:src="@drawable/ic_default_user"/>
-
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_default_user" />
 
 
             <EditText
@@ -89,7 +90,7 @@
                 android:id="@+id/passwfield"
                 android:layout_width="299dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="59dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="37dp"
                 android:layout_marginEnd="62dp"
                 android:ems="10"
@@ -112,14 +113,16 @@
 
             <Button
                 android:id="@+id/lawyerSignupbtn1"
-                android:layout_width="wrap_content"
-                android:layout_height="58dp"
+                android:layout_width="227dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="52dp"
                 android:layout_marginEnd="60dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_button_signup"
                 android:text="Create Your Account"
                 android:textAllCaps="false"
+                android:textColor="#FFFF"
                 android:textSize="16sp" />
 
         </LinearLayout>
