@@ -32,29 +32,30 @@
         android:layout_marginEnd="125dp"
         app:srcCompat="@drawable/wakili_finder_logo" />
 
+
     <Button
         android:id="@+id/clientAcc"
-        android:layout_width="331dp"
-        android:textColor="#FFFF"
-        android:background="@drawable/custom_button_login"
-        android:layout_height="61dp"
-        android:textAllCaps="false"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/imageView2"
-        android:textSize="18dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"
-        android:text="Client" />
+        android:layout_marginTop="62dp"
+        android:background="@drawable/custom_button_login"
+        android:text="Client"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"
+        android:textSize="18dp" />
 
     <Button
         android:id="@+id/lawyerAcc"
-        android:layout_width="332dp"
-        android:textColor="#FFFF"
-        android:background="@drawable/custom_button_signup"
-        android:layout_height="60dp"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/clientAcc"
         android:layout_centerHorizontal="true"
-        android:textSize="18dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/custom_button_signup"
+        android:text="Lawyer"
         android:textAllCaps="false"
-        android:text="Lawyer" />
+        android:textColor="#FFFF"
+        android:textSize="18dp" />
 </RelativeLayout>

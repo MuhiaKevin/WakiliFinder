@@ -80,16 +80,16 @@
     <Button
         android:id="@+id/lawyerSignupbtn1"
         android:layout_width="wrap_content"
-        android:layout_height="58dp"
-        android:textColor="#FFF"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/confirmfield"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="63dp"
         android:layout_marginEnd="55dp"
         android:background="@drawable/custom_button_signup"
         android:text="Create Account"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:textColor="#FFF" />
 
 </RelativeLayout>
