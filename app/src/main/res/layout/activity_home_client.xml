@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#333958"
     android:layout_height="match_parent"
-    tools:context=".HomeClient">
+    tools:context=".HomeClient"
+    android:id="@+id/drawer">
 
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        layout="@layout/app_toolbar" />
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/drawer_menu"
+        android:layout_gravity="start"
+        >
+
+    </com.google.android.material.navigation.NavigationView>
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="65dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerview"
         />
 
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

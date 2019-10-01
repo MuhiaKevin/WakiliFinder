@@ -2,4 +2,6 @@
     <string name="app_name">Wakili Finder</string>
     <string name="title_activity_client_login">ClientLogin</string>
     <string name="title_activity_lawyer_signup2_maps">Map</string>
+    <string name="open_drawer">open</string>
+    <string name="close_drawer">close</string>
 </resources>

@@ -13,3 +13,4 @@ A simple Android application that allows you to get access to a lawyer near your
 * [ ] Show lawyer availability
 * [ ] Add table showing lawyer stats[like this](https://online.lsk.or.ke/searchDetails/eyJpdiI6Imp6M1gyYlwvd1wvdWYzNGEwaFU4dEtVQT09IiwidmFsdWUiOiJncXdwc1BTUEk3c3ZWVlozOWF5STE3OEtqek02SWVublJMY1ZlSWxXaGpnPSIsIm1hYyI6ImIyZDU3MGFjNzJhNzNkYWY1OTZhZmRlMDc0MjE2YjFiZTdjNjljY2IyMWQ0ZjNiNjNlNWExMjEwOGYwZTRjZDMifQ==)
 * [ ] add Navigation menu
+* [ ] add serach feature to search by county

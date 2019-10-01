@@ -1,28 +1,40 @@
 package com.wakilifinder.wakilifinder;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class HomeClient extends AppCompatActivity {
+public class HomeClient extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle drawerToggle;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
     private RecyclerView recyclerView;
     private ArrayList<DatasetFire> arrayList;
     private FirebaseRecyclerOptions<DatasetFire> options;
@@ -46,6 +58,26 @@ public class HomeClient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_client);
+        toolbar = findViewById(R.id.toolbar);
+        // set title color to white
+        toolbar.setTitleTextColor(getResources().getColor(R.color.whitte));
+
+        // set three dot color as white, new ico is needed
+        toolbar.setOverflowIcon(getDrawable(R.drawable.ic_more_vert_black_24dp));
+
+        setSupportActionBar(toolbar);
+
+
+        // drawer menu settings
+        drawerLayout = findViewById(R.id.drawer);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+        drawerLayout.addDrawerListener(drawerToggle);
+        // set hamburger color white
+        drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.whitte));
+        drawerToggle.setDrawerIndicatorEnabled(true); // enable hambugrer
+        drawerToggle.syncState();
+
+
         recyclerView =  findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -65,6 +97,7 @@ public class HomeClient extends AppCompatActivity {
                         .apply(new RequestOptions().override(1000, 400))
                         .into(firebaseViewHolder.imageurl);
 
+                // show in recyclerview
                 firebaseViewHolder.email.setText(datasetFire.getEmail());
                 firebaseViewHolder.p105number.setText(datasetFire.getP105number());
                 firebaseViewHolder.password.setText(datasetFire.getPassword());
@@ -91,5 +124,47 @@ public class HomeClient extends AppCompatActivity {
 
 
         recyclerView.setAdapter(adapter);
+
+        // select navigation first
+
+        navigationView = findViewById(R.id.navigationView);
+        navigationView.setNavigationItemSelectedListener(this);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // set menu inflater
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.rateus:
+                Toast.makeText(this, "Rate button clicked", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.settings:
+                Toast.makeText(this, "Settings button clicked", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.contact:
+                Toast.makeText(this, "Contact button clicked", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()){
+            case R.id.home:
+                Toast.makeText(this, "Home button clicked", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return false;
     }
 }
