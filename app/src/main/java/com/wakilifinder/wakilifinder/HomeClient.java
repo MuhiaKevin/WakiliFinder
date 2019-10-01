@@ -23,6 +23,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -144,14 +145,15 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.rateus:
-                Toast.makeText(this, "Rate button clicked", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.settings:
                 Toast.makeText(this, "Settings button clicked", Toast.LENGTH_SHORT).show();
                 break;
+
             case R.id.contact:
-                Toast.makeText(this, "Contact button clicked", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(HomeClient.this, MainActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
 
@@ -162,9 +164,9 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.home:
-                Toast.makeText(this, "Home button clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Home button clicked",Toast.LENGTH_SHORT).show();
                 break;
         }
-        return false;
+        return true;
     }
 }
