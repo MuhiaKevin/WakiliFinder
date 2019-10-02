@@ -91,7 +91,7 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
             @Override
             protected void onBindViewHolder(@NonNull FirebaseViewHolder firebaseViewHolder, int i, @NonNull final DatasetFire datasetFire) {
 
-//                Picasso.get().load(datasetFire.getImageurl()).fit().centerCrop().into(firebaseViewHolder.imageurl);
+                //Picasso.get().load(datasetFire.getImageurl()).fit().centerCrop().into(firebaseViewHolder.imageurl);
                 Glide
                         .with(getApplicationContext())
                         .load(datasetFire.getImageurl())
@@ -122,12 +122,8 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
             }
         };
 
-
-
         recyclerView.setAdapter(adapter);
-
         // select navigation first
-
         navigationView = findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
 

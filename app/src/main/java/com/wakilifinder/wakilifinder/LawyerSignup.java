@@ -166,6 +166,7 @@ public class LawyerSignup extends AppCompatActivity {
                                                     HashMap<String,String> hashMap = new HashMap<>();
 
                                                     hashMap.put("imageurl", String.valueOf(uri));
+                                                    hashMap.put("userid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                     hashMap.put("email", String.valueOf(email));
                                                     hashMap.put("p105number", String.valueOf(p105strng));
                                                     hashMap.put("practicenumber", String.valueOf(practicenumstrng));

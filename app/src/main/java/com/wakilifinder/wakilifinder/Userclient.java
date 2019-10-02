@@ -4,12 +4,14 @@ package com.wakilifinder.wakilifinder;
 
 public class Userclient {
     public String email;
+    public String userid;
     public String password;
     public String phonenumber;
 
 
-    public Userclient(String email,String password, String phonenumber){
+    public Userclient(String email,String userid, String password, String phonenumber){
         this.email = email;
+        this.userid = userid;
         this.password = password;
         this.phonenumber = phonenumber;
 
