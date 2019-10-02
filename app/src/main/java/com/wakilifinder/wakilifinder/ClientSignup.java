@@ -17,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.wakilifinder.wakilifinder.Model.Userclient;
 
 public class ClientSignup extends AppCompatActivity {
 
@@ -81,7 +82,7 @@ public class ClientSignup extends AppCompatActivity {
                     return;
                 }
 
-                
+
                 final ProgressDialog progressDialog = new ProgressDialog(ClientSignup.this);
                 progressDialog.setIndeterminate(true);
                 progressDialog.setMessage("Registering...");
