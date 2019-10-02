@@ -4,4 +4,7 @@
     <string name="title_activity_lawyer_signup2_maps">Map</string>
     <string name="open_drawer">open</string>
     <string name="close_drawer">close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
