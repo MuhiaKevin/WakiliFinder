@@ -46,7 +46,7 @@ public class LawyerLogin extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
 
-                    startActivity(new Intent(LawyerLogin.this, HomeClient.class));
+                    startActivity(new Intent(LawyerLogin.this, HomeLawyer.class));
                 }
             }
         };

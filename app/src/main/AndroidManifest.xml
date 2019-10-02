@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".ClientLogin" />
         <activity android:name=".ClientSignup" />
         <activity android:name=".HomeClient" />
@@ -51,7 +51,8 @@
         <activity
             android:name=".LawyerSignup"
             android:label="@string/title_activity_lawyer_signup2_maps" />
-        <activity android:name=".HomeClient2"></activity>
+        <activity android:name=".HomeClient2" />
+        <activity android:name=".HomeLawyer"></activity>
     </application>
 
 </manifest>

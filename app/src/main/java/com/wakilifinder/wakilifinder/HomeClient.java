@@ -26,7 +26,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -141,19 +140,15 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.settings:
-                Toast.makeText(this, "Settings button clicked", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.contact:
+            case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(HomeClient.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-                break;
+                return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     @Override
