@@ -100,7 +100,7 @@ public class ClientSignup extends AppCompatActivity {
 
                         else{
                             String user_id = mAuth.getCurrentUser().getUid();
-                            final Userclient user = new Userclient(email,user_id,password,phone);
+                            final Userclient user = new Userclient(email,user_id,"default", password, phone);
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(user_id);
                             current_user_db.setValue(user);
                             progressDialog.dismiss();
