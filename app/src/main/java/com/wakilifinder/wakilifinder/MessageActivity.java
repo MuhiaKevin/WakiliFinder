@@ -123,7 +123,7 @@ public class MessageActivity extends AppCompatActivity {
                 username.setText(user.getEmail());
 
                 profile_image.setImageResource(R.mipmap.ic_launcher);
-                readMessages(fuser.getUid(), userid, user.getImageURL());
+                readMessages(fuser.getUid(), userid);
             }
 
             @Override
@@ -152,7 +152,7 @@ public class MessageActivity extends AppCompatActivity {
 
     // read message to the recyclerview
 
-    private void readMessages(final String myid, final String userid, final String imageurl){
+    private void readMessages(final String myid, final String userid){
         mchat =  new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference("Chats");
 
@@ -167,7 +167,7 @@ public class MessageActivity extends AppCompatActivity {
                         mchat.add(chat);
                     }
 
-                    messageAdapter = new MessageAdapter(MessageActivity.this, mchat, imageurl);
+                    messageAdapter = new MessageAdapter(MessageActivity.this, mchat);
                     recyclerView.setAdapter(messageAdapter);
                 }
             }
