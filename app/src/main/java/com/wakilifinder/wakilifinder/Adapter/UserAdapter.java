@@ -1,12 +1,14 @@
 package com.wakilifinder.wakilifinder.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.wakilifinder.wakilifinder.MessageActivity;
 import com.wakilifinder.wakilifinder.Model.Userclient;
 import com.wakilifinder.wakilifinder.R;
 
@@ -39,6 +41,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         final Userclient user = mUsers.get(position);
         holder.username.setText(user.getEmail());
         holder.profile_image.setImageResource(R.mipmap.ic_launcher);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,MessageActivity.class);
+                intent.putExtra("userid", user.getUserid());
+                intent.putExtra("user","lawyer");
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
