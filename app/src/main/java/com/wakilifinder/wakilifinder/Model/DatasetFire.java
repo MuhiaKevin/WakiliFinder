@@ -1,4 +1,4 @@
-package com.wakilifinder.wakilifinder;
+package com.wakilifinder.wakilifinder.Model;
 
 import android.widget.ImageView;
 

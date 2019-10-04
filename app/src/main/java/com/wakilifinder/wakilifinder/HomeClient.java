@@ -26,6 +26,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.wakilifinder.wakilifinder.Adapter.FirebaseViewHolder;
+import com.wakilifinder.wakilifinder.Model.DatasetFire;
 
 import java.util.ArrayList;
 

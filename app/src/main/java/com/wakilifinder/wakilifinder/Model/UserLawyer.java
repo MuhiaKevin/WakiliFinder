@@ -3,7 +3,7 @@ package com.wakilifinder.wakilifinder.Model;
 // model for lawyer when sending to firebase database
 
 public class UserLawyer {
-
+    public String userid;
     public String profileimage;
     public String email;
     public String p105number;
@@ -11,8 +11,9 @@ public class UserLawyer {
     public String password;
 
 
-    public UserLawyer(String profileimage, String email,String password, String p105number, String practicenum){
+    public UserLawyer(String userid,String profileimage, String email,String password, String p105number, String practicenum){
         this.profileimage = profileimage;
+        this.userid = userid;
         this.email = email;
         this.password = password;
         this.p105number = p105number;
@@ -29,6 +30,14 @@ public class UserLawyer {
 
     public void setProfileimage(String profileimage) {
         this.profileimage = profileimage;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getEmail() {
