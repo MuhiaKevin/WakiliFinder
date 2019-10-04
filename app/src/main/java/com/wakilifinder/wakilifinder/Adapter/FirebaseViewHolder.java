@@ -1,8 +1,10 @@
-package com.wakilifinder.wakilifinder;
+package com.wakilifinder.wakilifinder.Adapter;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.wakilifinder.wakilifinder.R;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

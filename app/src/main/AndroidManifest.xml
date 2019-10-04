@@ -51,7 +51,7 @@
         <activity
             android:name=".LawyerSignup"
             android:label="@string/title_activity_lawyer_signup2_maps" />
-        <activity android:name=".HomeClient2" />
+        <activity android:name=".MessageActivity" />
         <activity android:name=".HomeLawyer"></activity>
     </application>
 

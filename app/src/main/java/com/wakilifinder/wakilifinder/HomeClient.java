@@ -26,6 +26,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.wakilifinder.wakilifinder.Adapter.FirebaseViewHolder;
+import com.wakilifinder.wakilifinder.Model.DatasetFire;
 
 import java.util.ArrayList;
 
@@ -106,13 +108,14 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
                 firebaseViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(HomeClient.this, HomeClient2.class);
-                        intent.putExtra("teamone",datasetFire.getP105number() );
-                        intent.putExtra("teamtwo", datasetFire.getPracticenumber());
+                        Intent intent = new Intent(HomeClient.this, MessageActivity.class);
+                        intent.putExtra("userid",datasetFire.getUserid());
+                        intent.putExtra("user","client");
                         startActivity(intent);
                     }
                 });
             }
+
 
             @NonNull
             @Override

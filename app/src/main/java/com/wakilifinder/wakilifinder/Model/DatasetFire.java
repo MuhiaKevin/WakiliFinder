@@ -1,12 +1,13 @@
-package com.wakilifinder.wakilifinder;
+package com.wakilifinder.wakilifinder.Model;
 
 import android.widget.ImageView;
 
 public class DatasetFire {
-    public String email, imageurl, p105number,password, practicenumber ;
+    public String email,userid,imageurl, p105number,password, practicenumber ;
 
-    public DatasetFire(String email, String imageurl, String p105number, String password, String practicenumber) {
+    public DatasetFire(String email,String userid, String imageurl, String p105number, String password, String practicenumber) {
         this.email = email;
+        this.userid = userid;
         this.imageurl = imageurl;
         this.p105number = p105number;
         this.password = password;
@@ -27,6 +28,14 @@ public class DatasetFire {
 
     public String getP105number() {
         return "P.105/"+ p105number;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public void setP105number(String p105number) {
