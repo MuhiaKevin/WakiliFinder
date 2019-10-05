@@ -4,15 +4,15 @@ package com.wakilifinder.wakilifinder.Model;
 
 public class UserLawyer {
     public String userid;
-    public String profileimage;
+    public String imageurl;
     public String email;
     public String p105number;
     public String practicenumber;
     public String password;
 
 
-    public UserLawyer(String userid,String profileimage, String email,String password, String p105number, String practicenum){
-        this.profileimage = profileimage;
+    public UserLawyer(String userid,String imageurl, String email,String password, String p105number, String practicenum){
+        this.imageurl = imageurl;
         this.userid = userid;
         this.email = email;
         this.password = password;
@@ -24,12 +24,12 @@ public class UserLawyer {
 
     }
 
-    public String getProfileimage() {
-        return profileimage;
+    public String getImageurl() {
+        return imageurl;
     }
 
-    public void setProfileimage(String profileimage) {
-        this.profileimage = profileimage;
+    public void setImageurl(String profileimage) {
+        this.imageurl = profileimage;
     }
 
     public String getUserid() {
