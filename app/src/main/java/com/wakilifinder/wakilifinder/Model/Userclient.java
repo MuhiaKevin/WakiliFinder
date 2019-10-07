@@ -6,13 +6,15 @@ public class Userclient {
     public String email;
     public String userid;
     public String password;
+    public String status;
     public String phonenumber;
 
 
-    public Userclient(String email,String userid, String password, String phonenumber){
+    public Userclient(String email,String userid, String password, String phonenumber,String status){
         this.email = email;
         this.userid = userid;
         this.password = password;
+        this.status = status;
         this.phonenumber = phonenumber;
 
     }
@@ -52,4 +54,8 @@ public class Userclient {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
 }

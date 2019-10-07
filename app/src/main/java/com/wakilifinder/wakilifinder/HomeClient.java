@@ -24,12 +24,14 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.wakilifinder.wakilifinder.Adapter.FirebaseViewHolder;
 import com.wakilifinder.wakilifinder.Model.DatasetFire;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomeClient extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,6 +44,8 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
     private FirebaseRecyclerOptions<DatasetFire> options;
     private FirebaseRecyclerAdapter<DatasetFire, FirebaseViewHolder> adapter;
     private DatabaseReference databaseReference;
+    private FirebaseUser firebaseUser;
+
 
 
     @Override
@@ -79,7 +83,7 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
         drawerToggle.setDrawerIndicatorEnabled(true); // enable hambugrer
         drawerToggle.syncState();
 
-
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         recyclerView =  findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -162,5 +166,28 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
                 break;
         }
         return true;
+    }
+
+    // update the status of the user
+
+    private void status(String status){
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(firebaseUser.getUid());
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+        // update the field of this entry
+        databaseReference.updateChildren(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        status("offline");
     }
 }

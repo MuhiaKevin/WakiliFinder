@@ -9,14 +9,16 @@ public class UserLawyer {
     public String p105number;
     public String practicenumber;
     public String password;
+    public String status;
 
 
-    public UserLawyer(String userid,String imageurl, String email,String password, String p105number, String practicenum){
+    public UserLawyer(String userid,String imageurl, String email,String password, String p105number, String practicenum, String status){
         this.imageurl = imageurl;
         this.userid = userid;
         this.email = email;
         this.password = password;
         this.p105number = p105number;
+        this.status = status;
         this.practicenumber = practicenum;
     }
 
@@ -71,4 +73,13 @@ public class UserLawyer {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
+
+    // alt + insert
+
+
+
 }

@@ -170,6 +170,7 @@ public class LawyerSignup extends AppCompatActivity {
                                                     hashMap.put("email", String.valueOf(email));
                                                     hashMap.put("p105number", String.valueOf(p105strng));
                                                     hashMap.put("practicenumber", String.valueOf(practicenumstrng));
+                                                    hashMap.put("status", "online");
                                                     hashMap.put("password", String.valueOf(password));
 
                                                     imageStore.setValue(hashMap);
