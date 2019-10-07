@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -27,8 +30,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.wakilifinder.wakilifinder.Adapter.FirebaseViewHolder;
 import com.wakilifinder.wakilifinder.Model.DatasetFire;
+import com.wakilifinder.wakilifinder.Model.UserLawyer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,12 +45,12 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
     private NavigationView navigationView;
     private Toolbar toolbar;
     private RecyclerView recyclerView;
-    private ArrayList<DatasetFire> arrayList;
+    private ArrayList<UserLawyer> mUsers;
     private FirebaseRecyclerOptions<DatasetFire> options;
     private FirebaseRecyclerAdapter<DatasetFire, FirebaseViewHolder> adapter;
     private DatabaseReference databaseReference;
     private FirebaseUser firebaseUser;
-
+    private EditText search_users;
 
 
     @Override
@@ -67,10 +72,8 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
         toolbar = findViewById(R.id.toolbar);
         // set title color to white
         toolbar.setTitleTextColor(getResources().getColor(R.color.whitte));
-
         // set three dot color as white, new ico is needed
         toolbar.setOverflowIcon(getDrawable(R.drawable.ic_more_vert_black_24dp));
-
         setSupportActionBar(toolbar);
 
 
@@ -83,11 +86,16 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
         drawerToggle.setDrawerIndicatorEnabled(true); // enable hambugrer
         drawerToggle.syncState();
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         recyclerView =  findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        arrayList =  new ArrayList<DatasetFire>();
+
+        mUsers =  new ArrayList<UserLawyer>();
+
+        search_users = findViewById(R.id.search_users);
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference =  FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers");
         databaseReference.keepSynced(true);
         options  = new FirebaseRecyclerOptions.Builder<DatasetFire>().setQuery(databaseReference, DatasetFire.class).build();
@@ -96,7 +104,6 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
             @Override
             protected void onBindViewHolder(@NonNull FirebaseViewHolder firebaseViewHolder, int i, @NonNull final DatasetFire datasetFire) {
 
-                //Picasso.get().load(datasetFire.getImageurl()).fit().centerCrop().into(firebaseViewHolder.imageurl);
                 Glide
                         .with(getApplicationContext())
                         .load(datasetFire.getImageurl())
