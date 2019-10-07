@@ -1,5 +1,7 @@
 package com.wakilifinder.wakilifinder.Adapter;
 
+// this adapter loads messages from to a recyclerview from the database
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

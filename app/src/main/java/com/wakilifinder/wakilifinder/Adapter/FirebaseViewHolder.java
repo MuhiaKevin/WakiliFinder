@@ -1,5 +1,7 @@
 package com.wakilifinder.wakilifinder.Adapter;
 
+// this adapter loads lawyer information to a recyclerview on the clients HomeClient Activity
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ public class FirebaseViewHolder extends RecyclerView.ViewHolder {
 
     public TextView email,p105number,password,practicenumber;
     public ImageView imageurl;
+
 
 
     public FirebaseViewHolder(@NonNull View itemView) {
