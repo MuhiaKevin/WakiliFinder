@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -48,7 +46,7 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
     private ArrayList<UserLawyer> mUsers;
     private FirebaseRecyclerOptions<DatasetFire> options;
     private FirebaseRecyclerAdapter<DatasetFire, FirebaseViewHolder> adapter;
-    private DatabaseReference databaseReference;
+    private DatabaseReference reference;
     private FirebaseUser firebaseUser;
     private EditText search_users;
 
@@ -96,9 +94,9 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
         search_users = findViewById(R.id.search_users);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        databaseReference =  FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers");
-        databaseReference.keepSynced(true);
-        options  = new FirebaseRecyclerOptions.Builder<DatasetFire>().setQuery(databaseReference, DatasetFire.class).build();
+        reference =  FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers");
+        reference.keepSynced(true);
+        options  = new FirebaseRecyclerOptions.Builder<DatasetFire>().setQuery(reference, DatasetFire.class).build();
 
         adapter = new FirebaseRecyclerAdapter<DatasetFire, FirebaseViewHolder>(options) {
             @Override
@@ -175,15 +173,17 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
         return true;
     }
 
+
     // update the status of the user
 
     private void status(String status){
+        reference = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(firebaseUser.getUid());
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(firebaseUser.getUid());
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("status", status);
         // update the field of this entry
-        databaseReference.updateChildren(hashMap);
+
+        reference.updateChildren(hashMap);
     }
 
     @Override
