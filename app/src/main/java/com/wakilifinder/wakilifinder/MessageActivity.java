@@ -203,8 +203,15 @@ public class MessageActivity extends AppCompatActivity {
     // update the status of the user
 
     private void status(String status){
+        String user = intent.getStringExtra("user");
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Users").child(fuser.getUid());
+        if (user.equals("client")){
+            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(fuser.getUid());
+        }
+        else if (user.equals("lawyer")){
+            reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(fuser.getUid());
+        }
+
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("status", status);
         // update the field of this entry
@@ -217,9 +224,4 @@ public class MessageActivity extends AppCompatActivity {
         status("online");
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        status("offline");
-    }
 }
