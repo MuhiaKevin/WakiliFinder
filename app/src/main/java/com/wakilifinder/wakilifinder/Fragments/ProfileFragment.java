@@ -48,13 +48,17 @@ public class ProfileFragment extends Fragment {
            @Override
            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                UserLawyer user = dataSnapshot.getValue(UserLawyer.class);
-               username.setText(user.getEmail());
 
-               if (user.getImageurl().equals("default")){
-                   image_profile.setImageResource(R.mipmap.ic_launcher);
-               } else {
-                   Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
+               if(isAdded()){
+                   username.setText(user.getEmail());
+
+                   if (user.getImageurl().equals("default")){
+                       image_profile.setImageResource(R.mipmap.ic_launcher);
+                   } else {
+                       Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
+                   }
                }
+
            }
 
            @Override

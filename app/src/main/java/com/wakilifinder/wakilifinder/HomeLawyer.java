@@ -67,11 +67,7 @@ public class HomeLawyer extends AppCompatActivity {
                 UserLawyer user = dataSnapshot.getValue(UserLawyer.class);
 
                 username.setText(user.getEmail());
-                if (user.getImageurl().equals("default")){
-                    profile_image.setImageResource(R.mipmap.ic_launcher);
-                } else {
-                    Glide.with(getApplicationContext()).load(user.getImageurl()).into(profile_image);
-                }
+                Glide.with(getApplicationContext()).load(user.getImageurl()).into(profile_image);
             }
 
             @Override
@@ -87,7 +83,7 @@ public class HomeLawyer extends AppCompatActivity {
 
         viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
         viewPagerAdapter.addFragment(new UsersFragment(), "Users");
-        viewPagerAdapter.addFragment(new AppointmentsFragment(), "Appointmets");
+//        viewPagerAdapter.addFragment(new AppointmentsFragment(), "Appointmets");
         viewPagerAdapter.addFragment(new ProfileFragment(), "Profile");
 
         viewPager.setAdapter(viewPagerAdapter);
