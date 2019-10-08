@@ -65,7 +65,16 @@ public class MessageActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MessageActivity.this, HomeLawyer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+                String userloggedin = intent.getStringExtra("user");
+
+                if (userloggedin.equals("client")){
+                    startActivity(new Intent(MessageActivity.this, HomeClient.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                }
+                else if (userloggedin.equals("lawyer")){
+                    startActivity(new Intent(MessageActivity.this, HomeLawyer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                }
+
             }
         });
 
