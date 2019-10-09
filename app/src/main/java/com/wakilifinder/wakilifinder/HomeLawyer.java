@@ -31,6 +31,7 @@ import com.wakilifinder.wakilifinder.Fragments.AppointmentsFragment;
 import com.wakilifinder.wakilifinder.Fragments.ChatsFragment;
 import com.wakilifinder.wakilifinder.Fragments.ProfileFragment;
 import com.wakilifinder.wakilifinder.Fragments.UsersFragment;
+import com.wakilifinder.wakilifinder.Model.Chat;
 import com.wakilifinder.wakilifinder.Model.UserLawyer;
 
 import java.util.ArrayList;
@@ -76,20 +77,46 @@ public class HomeLawyer extends AppCompatActivity {
             }
         });
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        ViewPager viewPager = findViewById(R.id.view_pager);
+       final TabLayout tabLayout = findViewById(R.id.tab_layout);
+        final ViewPager viewPager = findViewById(R.id.view_pager);
 
         ViewPagerAdapter viewPagerAdapter  = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
-//        viewPagerAdapter.addFragment(new UsersFragment(), "Users");
-        viewPagerAdapter.addFragment(new AppointmentsFragment(), "Appointmets");
-        viewPagerAdapter.addFragment(new ProfileFragment(), "Profile");
+        reference = FirebaseDatabase.getInstance().getReference("Chats");
 
-        viewPager.setAdapter(viewPagerAdapter);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+                int unread = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Chat chat = snapshot.getValue(Chat.class);
+                    if (chat.getReceiver().equals(firebaseUser.getUid()) && !chat.isIsseen()){
+                        unread++;
+                    }
+                }
 
-        tabLayout.setupWithViewPager(viewPager);
+                if (unread == 0){
+                    viewPagerAdapter.addFragment(new ChatsFragment(), "Clients");
+                } else {
+                    viewPagerAdapter.addFragment(new ChatsFragment(), "("+unread+") Chats");
+                }
 
+               // viewPagerAdapter.addFragment(new UsersFragment(), "Users");
+                viewPagerAdapter.addFragment(new AppointmentsFragment(), "Appointments");
+                viewPagerAdapter.addFragment(new ProfileFragment(), "Profile");
+
+                viewPager.setAdapter(viewPagerAdapter);
+
+                tabLayout.setupWithViewPager(viewPager);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
