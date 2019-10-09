@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.wakilifinder.wakilifinder.Adapter.MessageAdapter;
 import com.wakilifinder.wakilifinder.Model.Chat;
+import com.wakilifinder.wakilifinder.Model.UserLawyer;
 import com.wakilifinder.wakilifinder.Model.Userclient;
 
 import java.util.ArrayList;
@@ -132,10 +133,15 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                Userclient user =  dataSnapshot.getValue(Userclient.class);
-                username.setText(user.getEmail());
+                UserLawyer user =  dataSnapshot.getValue(UserLawyer.class);
+                username.setText(user.getUsername());
 
-                profile_image.setImageResource(R.mipmap.ic_launcher);
+                if (user.getImageurl() == null){
+                    profile_image.setImageResource(R.mipmap.ic_launcher);
+                } else {
+                    Glide.with(getApplicationContext()).load(user.getImageurl()).into(profile_image);
+                }
+
                 readMessages(fuser.getUid(), userid);
             }
 

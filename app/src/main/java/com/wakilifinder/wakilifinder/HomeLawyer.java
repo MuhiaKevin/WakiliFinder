@@ -67,7 +67,7 @@ public class HomeLawyer extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserLawyer user = dataSnapshot.getValue(UserLawyer.class);
 
-                username.setText(user.getEmail());
+                username.setText(user.getUsername());
                 Glide.with(getApplicationContext()).load(user.getImageurl()).into(profile_image);
             }
 
