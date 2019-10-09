@@ -52,7 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Userclient user = mUsers.get(position);
-        holder.username.setText(user.getEmail());
+        holder.username.setText(user.getUsername());
         holder.profile_image.setImageResource(R.mipmap.ic_launcher);
 
         if (ischat){
