@@ -35,7 +35,7 @@ public class ClientSignup extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         phoneno = findViewById(R.id.p105number);
-        emailfield = findViewById(R.id.clientemailfield);
+        emailfield = findViewById(R.id.lawyeremailfield);
         usernamefield = findViewById(R.id.clientusernamefield);
         confirmpass = findViewById(R.id.confirmfield);
         passwfield = findViewById(R.id.passwfield);

@@ -38,7 +38,7 @@ import java.util.Map;
 public class LawyerSignup extends AppCompatActivity {
 
 
-    private EditText emailfield, passwfield, p105numberfield,praticenumberfield,confirmpassfield;
+    private EditText emailfield, usernamefield, passwfield, p105numberfield,praticenumberfield,confirmpassfield;
     private Button createAccbtn;
     private ImageView mProfileImage;
     private Uri resultUri ;
@@ -56,6 +56,7 @@ public class LawyerSignup extends AppCompatActivity {
         Log.i(TAG,"STARTED APP");
 
         emailfield = findViewById(R.id.lawyeremailfield);
+        usernamefield = findViewById(R.id.lawyerusernamefield);
         p105numberfield = findViewById(R.id.p105number);
         praticenumberfield = findViewById(R.id.practiceNumber);
         passwfield = findViewById(R.id.passwfield);
@@ -79,6 +80,7 @@ public class LawyerSignup extends AppCompatActivity {
             public void onClick(View v) {
                 final String email = emailfield.getText().toString();
                 final String p105strng = p105numberfield.getText().toString();
+                final String username = usernamefield.getText().toString();
                 final String practicenumstrng =  praticenumberfield.getText().toString();
 
                 // password must have a length of 6 alphanumeric characters
@@ -86,6 +88,12 @@ public class LawyerSignup extends AppCompatActivity {
                 final String confirmpassw = confirmpassfield.getText().toString();
 
                 // validating inputs
+
+                if (username.isEmpty()) {
+                    usernamefield.setError("Required! ");
+                    usernamefield.requestFocus();
+                    return;
+                }
 
                 if (email.isEmpty()) {
                     emailfield.setError("Required! ");
@@ -168,6 +176,7 @@ public class LawyerSignup extends AppCompatActivity {
                                                     hashMap.put("imageurl", String.valueOf(uri));
                                                     hashMap.put("userid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                     hashMap.put("email", String.valueOf(email));
+                                                    hashMap.put("username", String.valueOf(username));
                                                     hashMap.put("p105number", String.valueOf(p105strng));
                                                     hashMap.put("practicenumber", String.valueOf(practicenumstrng));
                                                     hashMap.put("status", "online");
