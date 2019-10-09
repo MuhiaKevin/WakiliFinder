@@ -50,7 +50,7 @@ public class ProfileFragment extends Fragment {
                UserLawyer user = dataSnapshot.getValue(UserLawyer.class);
 
                if(isAdded()){
-                   username.setText(user.getEmail());
+                   username.setText(user.getUsername());
 
                    if (user.getImageurl().equals("default")){
                        image_profile.setImageResource(R.mipmap.ic_launcher);
