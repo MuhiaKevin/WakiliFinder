@@ -21,7 +21,7 @@ import com.wakilifinder.wakilifinder.Model.Userclient;
 
 public class ClientSignup extends AppCompatActivity {
 
-    private EditText emailfield, passwfield, phoneno,confirmpass;
+    private EditText usernamefield,emailfield, passwfield, phoneno,confirmpass;
     private Button createAcc;
 
     public FirebaseAuth mAuth;
@@ -35,7 +35,8 @@ public class ClientSignup extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         phoneno = findViewById(R.id.p105number);
-        emailfield = findViewById(R.id.lawyeremailfield);
+        emailfield = findViewById(R.id.clientemailfield);
+        usernamefield = findViewById(R.id.clientusernamefield);
         confirmpass = findViewById(R.id.confirmfield);
         passwfield = findViewById(R.id.passwfield);
         createAcc = findViewById(R.id.lawyerSignupbtn1);
@@ -45,13 +46,18 @@ public class ClientSignup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String email = emailfield.getText().toString();
+                final String username = usernamefield.getText().toString();
 
                 // password must have a length of 6 alphanumeric characters
                 final String password = passwfield.getText().toString();
                 final String phone = phoneno.getText().toString();
                 final String confirmpassw = confirmpass.getText().toString();
 
-
+                if (username.isEmpty()) {
+                    usernamefield.setError("Required! ");
+                    usernamefield.requestFocus();
+                    return;
+                }
                 if (email.isEmpty()) {
                     emailfield.setError("Required! ");
                     emailfield.requestFocus();
@@ -100,7 +106,7 @@ public class ClientSignup extends AppCompatActivity {
 
                         else{
                             String user_id = mAuth.getCurrentUser().getUid();
-                            final Userclient user = new Userclient(email,user_id, password, phone,"online");
+                            final Userclient user = new Userclient(username.toLowerCase(),email,user_id, password, phone,"online");
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(user_id);
                             current_user_db.setValue(user);
                             progressDialog.dismiss();
