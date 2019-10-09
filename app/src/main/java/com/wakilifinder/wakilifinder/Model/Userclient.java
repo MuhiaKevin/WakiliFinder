@@ -4,14 +4,16 @@ package com.wakilifinder.wakilifinder.Model;
 
 public class Userclient {
     public String email;
+    public String username;
     public String userid;
     public String password;
     public String status;
     public String phonenumber;
 
 
-    public Userclient(String email,String userid, String password, String phonenumber,String status){
+    public Userclient(String username,String email,String userid, String password, String phonenumber,String status){
         this.email = email;
+        this.username = username;
         this.userid = userid;
         this.password = password;
         this.status = status;
@@ -58,4 +60,12 @@ public class Userclient {
     public String getStatus() { return status; }
 
     public void setStatus(String status) { this.status = status; }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

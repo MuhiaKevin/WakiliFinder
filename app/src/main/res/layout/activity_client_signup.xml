@@ -18,10 +18,25 @@
         android:textSize="36sp" />
 
     <EditText
-        android:id="@+id/lawyeremailfield"
+        android:id="@+id/clientusernamefield"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="54dp"
+        android:ems="10"
+        android:hint="Full Names"
+        android:inputType="textEmailAddress"
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/clientemailfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clientusernamefield"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="65dp"
@@ -36,7 +51,7 @@
         android:id="@+id/p105number"
         android:layout_width="302dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lawyeremailfield"
+        android:layout_below="@+id/clientemailfield"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="64dp"
