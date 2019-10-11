@@ -123,33 +123,57 @@ public class MessageActivity extends AppCompatActivity {
 
         if (user.equals("client")){
             reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(userid);
-        }
-        else if (user.equals("lawyer")){
-            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(userid);
-        }
 
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    UserLawyer user =  dataSnapshot.getValue(UserLawyer.class);
+                    username.setText(user.getUsername());
 
-                UserLawyer user =  dataSnapshot.getValue(UserLawyer.class);
-                username.setText(user.getUsername());
+                    if (user.getImageurl() == null){
+                        profile_image.setImageResource(R.mipmap.ic_launcher);
+                    } else {
+                        Glide.with(getApplicationContext()).load(user.getImageurl()).into(profile_image);
+                    }
 
-                if (user.getImageurl() == null){
-                    profile_image.setImageResource(R.mipmap.ic_launcher);
-                } else {
-                    Glide.with(getApplicationContext()).load(user.getImageurl()).into(profile_image);
+                    readMessages(fuser.getUid(), userid);
                 }
 
-                readMessages(fuser.getUid(), userid);
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }
 
-            }
-        });
+        else if (user.equals("lawyer")){
+
+            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(userid);
+
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    Userclient user = dataSnapshot.getValue(Userclient.class);
+
+                    username.setText(user.getUsername());
+                    profile_image.setImageResource(R.mipmap.ic_launcher);
+
+
+
+                    readMessages(fuser.getUid(), userid);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+
+
 
         seenMessage(userid);
 
@@ -264,31 +288,31 @@ public class MessageActivity extends AppCompatActivity {
 
     // update the status of the user
 
-    private void status(String status){
-        String user = intent.getStringExtra("user");
-
-        if (user.equals("client")){
-            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(fuser.getUid());
-        }
-        else if (user.equals("lawyer")){
-            reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(fuser.getUid());
-        }
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-        // update the field of this entry
-        reference.updateChildren(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        reference.removeEventListener(seenListener);
-    }
+//    private void status(String status){
+//        String user = intent.getStringExtra("user");
+//
+//        if (user.equals("client")){
+//            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(fuser.getUid());
+//        }
+//        else if (user.equals("lawyer")){
+//            reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(fuser.getUid());
+//        }
+//
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("status", status);
+//        // update the field of this entry
+//        reference.updateChildren(hashMap);
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        status("online");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        reference.removeEventListener(seenListener);
+//    }
 }

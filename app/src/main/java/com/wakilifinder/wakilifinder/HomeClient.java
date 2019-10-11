@@ -79,7 +79,6 @@ public class HomeClient extends AppCompatActivity  {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Userclient user = dataSnapshot.getValue(Userclient.class);
-
                 username.setText(user.getUsername());
                 profile_image.setImageResource(R.mipmap.ic_launcher);
 

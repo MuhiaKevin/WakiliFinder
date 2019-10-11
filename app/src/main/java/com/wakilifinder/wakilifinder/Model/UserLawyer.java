@@ -36,6 +36,7 @@ public class UserLawyer {
         this.imageurl = profileimage;
     }
 
+
     public String getUserid() {
         return userid;
     }
