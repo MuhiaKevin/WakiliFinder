@@ -1,42 +1,43 @@
 package com.wakilifinder.wakilifinder;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import com.wakilifinder.wakilifinder.Adapter.FirebaseViewHolder;
-import com.wakilifinder.wakilifinder.Model.DatasetFire;
+import com.google.firebase.database.ValueEventListener;
+import com.wakilifinder.wakilifinder.Fragments.HistoryFragment;
+import com.wakilifinder.wakilifinder.Fragments.LawyersFragment;
 import com.wakilifinder.wakilifinder.Model.UserLawyer;
+import com.wakilifinder.wakilifinder.Model.Userclient;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class HomeClient extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeClient extends AppCompatActivity  {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -44,157 +45,120 @@ public class HomeClient extends AppCompatActivity implements NavigationView.OnNa
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private ArrayList<UserLawyer> mUsers;
-    private FirebaseRecyclerOptions<DatasetFire> options;
-    private FirebaseRecyclerAdapter<DatasetFire, FirebaseViewHolder> adapter;
-    private DatabaseReference reference;
+
     private FirebaseUser firebaseUser;
+    private DatabaseReference reference;
+
     private EditText search_users;
+    private CircleImageView profile_image;
+    private TextView username;
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_client);
-        toolbar = findViewById(R.id.toolbar);
-        // set title color to white
-        toolbar.setTitleTextColor(getResources().getColor(R.color.whitte));
-        // set three dot color as white, new ico is needed
-        toolbar.setOverflowIcon(getDrawable(R.drawable.ic_more_vert_black_24dp));
+
+        // set up toolabr display
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
-
-        // drawer menu settings
-        drawerLayout = findViewById(R.id.drawer);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
-        drawerLayout.addDrawerListener(drawerToggle);
-        // set hamburger color white
-        drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.whitte));
-        drawerToggle.setDrawerIndicatorEnabled(true); // enable hambugrer
-        drawerToggle.syncState();
-
-
-        recyclerView =  findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        mUsers =  new ArrayList<UserLawyer>();
-
-        search_users = findViewById(R.id.search_users);
+        profile_image = findViewById(R.id.profile_image);
+        username = findViewById(R.id.username);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference =  FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers");
-        reference.keepSynced(true);
-        options  = new FirebaseRecyclerOptions.Builder<DatasetFire>().setQuery(reference, DatasetFire.class).build();
+        reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(firebaseUser.getUid());
 
-        adapter = new FirebaseRecyclerAdapter<DatasetFire, FirebaseViewHolder>(options) {
+
+
+        // set user information on the top bar of  activity
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            protected void onBindViewHolder(@NonNull FirebaseViewHolder firebaseViewHolder, int i, @NonNull final DatasetFire datasetFire) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Userclient user = dataSnapshot.getValue(Userclient.class);
 
-                Glide
-                        .with(getApplicationContext())
-                        .load(datasetFire.getImageurl())
-                        .apply(new RequestOptions().override(1000, 400))
-                        .into(firebaseViewHolder.imageurl);
+                username.setText(user.getUsername());
+                profile_image.setImageResource(R.mipmap.ic_launcher);
 
-                // show in recyclerview
-                firebaseViewHolder.email.setText(datasetFire.getEmail());
-                firebaseViewHolder.p105number.setText(datasetFire.getP105number());
-                firebaseViewHolder.password.setText(datasetFire.getPassword());
-                firebaseViewHolder.practicenumber.setText(datasetFire.getPracticenumber());
-
-                firebaseViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(HomeClient.this, MessageActivity.class);
-                        intent.putExtra("userid",datasetFire.getUserid());
-                        intent.putExtra("user","client");
-                        startActivity(intent);
-                    }
-                });
             }
 
-
-            @NonNull
             @Override
-            public FirebaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return new FirebaseViewHolder(LayoutInflater.from(HomeClient.this).inflate(R.layout.row,parent,false));
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
-        };
+        });
 
-        recyclerView.setAdapter(adapter);
-        // select navigation first
-        navigationView = findViewById(R.id.navigationView);
-        navigationView.setNavigationItemSelectedListener(this);
 
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        ViewPager viewPager = findViewById(R.id.view_pager);
+
+        ViewPagerAdapter viewPagerAdapter =  new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new LawyersFragment(),"Lawyers");
+        viewPagerAdapter.addFragment(new HistoryFragment(),"History");
+
+        viewPager.setAdapter(viewPagerAdapter);
+
+        tabLayout.setupWithViewPager(viewPager);
     }
 
-    @Override
+
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        ArrayList<Fragment> fragments;
+        ArrayList<String> titles;
+
+        ViewPagerAdapter(FragmentManager fm){
+            super(fm);
+            this.fragments = new ArrayList<>();
+            this.titles = new ArrayList<>();
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+        public void addFragment(Fragment fragment, String title){
+            fragments.add(fragment);
+            titles.add(title);
+        }
+
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles.get(position);
+        }
+    }
+
+    // set menu layout on the toolbar
     public boolean onCreateOptionsMenu(Menu menu) {
-        // set menu inflater
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
-
+    // if log out button on the appbar then the app logs the user out
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.logout:
+
+            // log out button
+            case  R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(HomeClient.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                startActivity(new Intent(HomeClient.this, ClientLogin.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
         }
 
         return false;
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()){
-            case R.id.home:
-                Toast.makeText(this, "Home button clicked",Toast.LENGTH_SHORT).show();
-                break;
-        }
-        return true;
-    }
-
-
-    // update the status of the user
-
-    private void status(String status){
-        reference = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(firebaseUser.getUid());
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-        // update the field of this entry
-
-        reference.updateChildren(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        status("offline");
-    }
 }

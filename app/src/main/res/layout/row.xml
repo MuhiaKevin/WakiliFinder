@@ -17,17 +17,18 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/profileImage"
+            android:id="@+id/profile_image"
             />
 
         <TextView
-            android:layout_marginTop="20dp"
-            android:id="@+id/email"
+            android:layout_marginTop="10dp"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:textAlignment="center"
-            android:text="Email" />
+            android:text="Username" />
+
 
 
         <TextView
@@ -39,14 +40,7 @@
             android:textAlignment="center"
             android:text="P105 nunber" />
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textAlignment="center"
-            android:text="Password" />
+
         <TextView
             android:layout_marginTop="10dp"
             android:id="@+id/practiceNumber"
