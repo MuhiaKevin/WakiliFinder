@@ -96,7 +96,7 @@ public class HomeClient extends AppCompatActivity  {
 
         ViewPagerAdapter viewPagerAdapter =  new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new LawyersFragment(),"Lawyers");
-        viewPagerAdapter.addFragment(new HistoryFragment(),"History");
+        viewPagerAdapter.addFragment(new HistoryFragment(),"Conversations");
 
         viewPager.setAdapter(viewPagerAdapter);
 
