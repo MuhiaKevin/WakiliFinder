@@ -91,10 +91,8 @@ public class LawyersFragment extends Fragment {
                         mUsers.add(user);
 
                     }
-
                     userLawyerAdapter = new UserLawyerAdapter(getContext(),mUsers);
                     recyclerView.setAdapter(userLawyerAdapter);
-
             }
 
             @Override
@@ -125,10 +123,8 @@ public class LawyersFragment extends Fragment {
                         mUsers.add(user);
                     }
                 }
-
                 userLawyerAdapter = new UserLawyerAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(userLawyerAdapter);
-
 
             }
 

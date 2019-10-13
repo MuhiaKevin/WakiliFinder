@@ -79,7 +79,6 @@ public class HomeClient extends AppCompatActivity  {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Userclient user = dataSnapshot.getValue(Userclient.class);
-
                 username.setText(user.getUsername());
                 profile_image.setImageResource(R.mipmap.ic_launcher);
 
@@ -97,7 +96,7 @@ public class HomeClient extends AppCompatActivity  {
 
         ViewPagerAdapter viewPagerAdapter =  new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new LawyersFragment(),"Lawyers");
-        viewPagerAdapter.addFragment(new HistoryFragment(),"History");
+        viewPagerAdapter.addFragment(new HistoryFragment(),"Conversations");
 
         viewPager.setAdapter(viewPagerAdapter);
 
