@@ -179,24 +179,24 @@ public class HomeLawyer extends AppCompatActivity {
 
     // update the status of the user
 
-    private void status(String status){
-
-        reference = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(firebaseUser.getUid());
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-        // update the field of this entry
-        reference.updateChildren(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        status("offline");
-    }
+//    private void status(String status){
+//
+//        reference = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(firebaseUser.getUid());
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("status", status);
+//        // update the field of this entry
+//        reference.updateChildren(hashMap);
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        status("online");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        status("offline");
+//    }
 }
