@@ -14,11 +14,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,12 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.wakilifinder.wakilifinder.Fragments.AppointmentsFragment;
 import com.wakilifinder.wakilifinder.Fragments.ChatsFragment;
 import com.wakilifinder.wakilifinder.Fragments.ProfileFragment;
-import com.wakilifinder.wakilifinder.Fragments.UsersFragment;
 import com.wakilifinder.wakilifinder.Model.Chat;
 import com.wakilifinder.wakilifinder.Model.UserLawyer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class HomeLawyer extends AppCompatActivity {
 
@@ -179,24 +175,25 @@ public class HomeLawyer extends AppCompatActivity {
 
     // update the status of the user
 
-    private void status(String status){
+//    private void status(String status){
+//
+//        reference = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(firebaseUser.getUid());
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("status", status);
+//        // update the field of this entry
+//        reference.updateChildren(hashMap);
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        status("online");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        status("offline");
+//    }
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").child(firebaseUser.getUid());
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-        // update the field of this entry
-        reference.updateChildren(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        status("offline");
-    }
 }

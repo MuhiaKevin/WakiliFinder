@@ -288,31 +288,31 @@ public class MessageActivity extends AppCompatActivity {
 
     // update the status of the user
 
-//    private void status(String status){
-//        String user = intent.getStringExtra("user");
-//
-//        if (user.equals("client")){
-//            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(fuser.getUid());
-//        }
-//        else if (user.equals("lawyer")){
-//            reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(fuser.getUid());
-//        }
-//
-//        HashMap<String, Object> hashMap = new HashMap<>();
-//        hashMap.put("status", status);
-//        // update the field of this entry
-//        reference.updateChildren(hashMap);
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        status("online");
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        reference.removeEventListener(seenListener);
-//    }
+    private void status(String status){
+        String user = intent.getStringExtra("user");
+
+        if (user.equals("client")){
+            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(fuser.getUid());
+        }
+        else if (user.equals("lawyer")){
+            reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(fuser.getUid());
+        }
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+        // update the field of this entry
+        reference.setValue(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        reference.removeEventListener(seenListener);
+    }
 }
