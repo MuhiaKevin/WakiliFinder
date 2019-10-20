@@ -59,7 +59,7 @@ public class LawyersFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                searchUsers(charSequence.toString());
+                searchUsers(charSequence.toString().toUpperCase());
             }
 
             @Override
@@ -107,7 +107,7 @@ public class LawyersFragment extends Fragment {
     private void searchUsers(String s) {
         final FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
         //CHANGE SO AS TO SEARCH BY COUNTY OR SUBCOUNTY
-        Query query = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").orderByChild("username").
+        Query query = FirebaseDatabase.getInstance().getReference().child("Users").child("Lawyers").orderByChild("county").
                 startAt(s)
                 .endAt(s+"\uf8ff");
         query.addValueEventListener(new ValueEventListener() {
