@@ -14,9 +14,12 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +38,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LawyerSignup extends AppCompatActivity {
+public class LawyerSignup extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
     private EditText emailfield, usernamefield, passwfield, p105numberfield,praticenumberfield,confirmpassfield;
@@ -43,9 +46,10 @@ public class LawyerSignup extends AppCompatActivity {
     private ImageView mProfileImage;
     private Uri resultUri ;
     private DatabaseReference mDatabaseRef;
-    public FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private static final String TAG = "MUNYAMUNYA";
+    public Spinner spinner;
+    public String county;
 
 
 
@@ -53,7 +57,6 @@ public class LawyerSignup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lawyer_signup);
-        Log.i(TAG,"STARTED APP");
 
         emailfield = findViewById(R.id.lawyeremailfield);
         usernamefield = findViewById(R.id.lawyerusernamefield);
@@ -63,6 +66,13 @@ public class LawyerSignup extends AppCompatActivity {
         confirmpassfield = findViewById(R.id.confirmfield);
         createAccbtn = findViewById(R.id.lawyerSignupbtn1);
         mProfileImage = findViewById(R.id.profileImage);
+
+        spinner = findViewById(R.id.countyspinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.counties,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
 
 
         mProfileImage.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +133,6 @@ public class LawyerSignup extends AppCompatActivity {
                     return;
                 }
 
-
                 if(!TextUtils.equals(password,confirmpassw)){
                     confirmpassfield.setError("Passwords don't match!");
                     confirmpassfield.requestFocus();
@@ -178,6 +187,7 @@ public class LawyerSignup extends AppCompatActivity {
                                                     hashMap.put("email", String.valueOf(email));
                                                     hashMap.put("username", String.valueOf(username));
                                                     hashMap.put("p105number", String.valueOf(p105strng));
+                                                    hashMap.put("county", String.valueOf(county).toUpperCase());
                                                     hashMap.put("practicenumber", String.valueOf(practicenumstrng));
                                                     hashMap.put("status", "online");
                                                     hashMap.put("password", String.valueOf(password));
@@ -210,7 +220,6 @@ public class LawyerSignup extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -235,4 +244,15 @@ public class LawyerSignup extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        county = parent.getItemAtPosition(position).toString();
+//        Toast.makeText(parent.getContext(),county, Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
