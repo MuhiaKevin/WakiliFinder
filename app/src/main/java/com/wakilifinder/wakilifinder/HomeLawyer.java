@@ -14,11 +14,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,12 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.wakilifinder.wakilifinder.Fragments.AppointmentsFragment;
 import com.wakilifinder.wakilifinder.Fragments.ChatsFragment;
 import com.wakilifinder.wakilifinder.Fragments.ProfileFragment;
-import com.wakilifinder.wakilifinder.Fragments.UsersFragment;
 import com.wakilifinder.wakilifinder.Model.Chat;
 import com.wakilifinder.wakilifinder.Model.UserLawyer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class HomeLawyer extends AppCompatActivity {
 
@@ -199,4 +195,5 @@ public class HomeLawyer extends AppCompatActivity {
 //        super.onPause();
 //        status("offline");
 //    }
+
 }
