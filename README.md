@@ -28,7 +28,6 @@ A simple Android application that allows you to get access to a lawyer near your
 
 ## TODO
 
-* Fix bug when lawyer signs up
 * Dropdown menu for lawyers to choose county and sub-county
 * make service that search lawyer by p105 number and return if lawyer is legitimate
 * Reverse geocoding to know clients location and to search the lawyers in that particular location
