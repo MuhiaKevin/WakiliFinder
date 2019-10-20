@@ -219,7 +219,7 @@ public class MessageActivity extends AppCompatActivity {
 
         reference.child("Chats").push().setValue(hashMap);
 
-       final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
+        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
                 .child(fuser.getUid())
                 .child(userid);
 
@@ -238,7 +238,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-      final DatabaseReference chatRefReceiver = FirebaseDatabase.getInstance().getReference("Chatlist").child(receiver).child(sender);
+        final DatabaseReference chatRefReceiver = FirebaseDatabase.getInstance().getReference("Chatlist").child(receiver).child(sender);
 
         chatRefReceiver.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -288,31 +288,32 @@ public class MessageActivity extends AppCompatActivity {
 
     // update the status of the user
 
-    private void status(String status){
-        String user = intent.getStringExtra("user");
+//    private void status(String status){
+//        String user = intent.getStringExtra("user");
+//
+//        if (user.equals("client")){
+//            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(fuser.getUid());
+//        }
+//        else if (user.equals("lawyer")){
+//            reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(fuser.getUid());
+//        }
+//
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("status", status);
+//        // update the field of this entry
+//        reference.updateChildren(hashMap);
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        status("online");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        reference.removeEventListener(seenListener);
+//    }
 
-        if (user.equals("client")){
-            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(fuser.getUid());
-        }
-        else if (user.equals("lawyer")){
-            reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(fuser.getUid());
-        }
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-        // update the field of this entry
-        reference.setValue(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        reference.removeEventListener(seenListener);
-    }
 }
