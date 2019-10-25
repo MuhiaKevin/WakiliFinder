@@ -19,39 +19,63 @@
             android:layout_marginLeft="10dp"
             android:id="@+id/profile_image" />
 
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/textusername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:textSize="18sp"
+            android:layout_toRightOf="@+id/profile_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:text="Name : " />
+
         <TextView
             android:layout_marginTop="10dp"
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
-            android:textSize="16sp"
-            android:layout_toRightOf="@+id/profile_image"
+            android:textSize="18sp"
+            android:layout_toRightOf="@+id/textusername"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:text="Username" />
-
+            android:layout_marginStart="10dp" />
 
 
         <TextView
-            android:id="@+id/p105number"
+            android:id="@+id/textp105number"
             android:layout_below="@+id/username"
             android:layout_toRightOf="@+id/profile_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="16dp"
-            android:text="P105 nunber" />
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="P105 : " />
 
 
         <TextView
+            android:id="@+id/p105number"
+            android:layout_below="@+id/username"
+            android:layout_toRightOf="@+id/textp105number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="18sp"
+             />
+
+        <TextView
+            android:id="@+id/practiceNumber"
             android:layout_below="@+id/p105number"
             android:layout_toRightOf="@+id/profile_image"
-            android:id="@+id/practiceNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:text="Practice Number" />
