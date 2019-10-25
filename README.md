@@ -28,6 +28,7 @@ A simple Android application that allows you to get access to a lawyer near your
 
 
 ## TODO
+* Redesign the Clients Recyclerview
 * Add payement Feature
 * Change android icon
 * Scrapper to check if lawyer is legitimate

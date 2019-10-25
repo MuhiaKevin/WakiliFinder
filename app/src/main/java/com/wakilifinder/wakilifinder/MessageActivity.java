@@ -160,8 +160,6 @@ public class MessageActivity extends AppCompatActivity {
                     username.setText(user.getUsername());
                     profile_image.setImageResource(R.mipmap.ic_launcher);
 
-
-
                     readMessages(fuser.getUid(), userid);
                 }
 
@@ -187,6 +185,7 @@ public class MessageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
+
                     if (chat.getReceiver().equals(fuser.getUid()) && chat.getSender().equals(userid)){
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("isseen", true);

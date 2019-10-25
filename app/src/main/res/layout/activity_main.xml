@@ -16,7 +16,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="47dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Account Selection"
+        android:text="Choose an Account"
+        style="@style/TextAppearance.AppCompat.Headline"
         android:textColor="#fff"
         android:textSize="36sp" />
 
