@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/logout"
-        android:title="Log Out" />
+        android:id="@+id/pay"
+        android:title="Pay Lawyer"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/reviewlawyer"
+        android:title="Review Lawyer"
+        app:showAsAction="never"/>
+
 </menu>

@@ -43,6 +43,19 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
 
+    //Retrofit 2
+
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+
+    // RxJava 2
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+
+
+    // Braintree Drop in
+    implementation 'com.braintreepayments.api:drop-in:3.7.1'
+
 
 }
 

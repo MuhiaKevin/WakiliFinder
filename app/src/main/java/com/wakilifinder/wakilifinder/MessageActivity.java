@@ -10,6 +10,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -60,6 +62,8 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
+        intent = getIntent();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -92,7 +96,7 @@ public class MessageActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         text_send = findViewById(R.id.text_send);
 
-        intent = getIntent();
+
 
         userid = intent.getStringExtra("userid");
         String user = intent.getStringExtra("user");
@@ -256,6 +260,41 @@ public class MessageActivity extends AppCompatActivity {
     }
 
 
+
+    // set menu layout on the toolbar
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+
+
+    // if button pay lawyer is clicked then open activity for client to pay lawyer
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+
+            // pay lawyer button
+            case  R.id.pay:
+//                Intent i = new Intent(getApplicationContext(),PayLawyer.class);
+//                startActivity(i);
+
+                Toast.makeText(this, "Do you want to pay lawyer", Toast.LENGTH_SHORT).show();
+                return true;
+
+            // pop up to let client leave a lawyers review lawyer button
+
+            case  R.id.reviewlawyer:
+                // show pop up and save in firebase
+                // saveReviewolawyer()
+
+                Toast.makeText(this, "Do you want to pay lawyer", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+
+        return false;
+    }
+
     // read message to the recyclerview
 
     private void readMessages(final String myid, final String userid){
@@ -285,34 +324,5 @@ public class MessageActivity extends AppCompatActivity {
         });
     }
 
-    // update the status of the user
-
-//    private void status(String status){
-//        String user = intent.getStringExtra("user");
-//
-//        if (user.equals("client")){
-//            reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(fuser.getUid());
-//        }
-//        else if (user.equals("lawyer")){
-//            reference = FirebaseDatabase.getInstance().getReference("Users").child("Lawyers").child(fuser.getUid());
-//        }
-//
-//        HashMap<String, Object> hashMap = new HashMap<>();
-//        hashMap.put("status", status);
-//        // update the field of this entry
-//        reference.updateChildren(hashMap);
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        status("online");
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        reference.removeEventListener(seenListener);
-//    }
 
 }
