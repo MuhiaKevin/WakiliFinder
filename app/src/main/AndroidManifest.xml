@@ -37,6 +37,7 @@
             android:label="@string/title_activity_lawyer_signup2_maps" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".HomeLawyer"/>
+        <activity android:name=".ClientPay"/>
     </application>
 
 </manifest>

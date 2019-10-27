@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -61,6 +62,7 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+
 
         intent = getIntent();
 
@@ -279,24 +281,23 @@ public class MessageActivity extends AppCompatActivity {
 
 
     // if button pay lawyer is clicked then open activity for client to pay lawyer
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
 
             // pay lawyer button
             case  R.id.pay:
-//                Intent i = new Intent(getApplicationContext(),PayLawyer.class);
-//                startActivity(i);
-                Toast.makeText(this, "Do you want to pay lawyer", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(),ClientPay.class);
+                startActivity(i);
                 return true;
 
             // pop up to let client leave a lawyers review lawyer button
-
             case  R.id.reviewlawyer:
                 // show pop up and save in firebase
                 // saveReviewolawyer()
 
-                Toast.makeText(this, "Do you want to pay lawyer", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Review lawyer", Toast.LENGTH_SHORT).show();
                 return true;
         }
 

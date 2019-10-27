@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -39,10 +40,6 @@ import java.util.ArrayList;
 
 public class HomeClient extends AppCompatActivity  {
 
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle drawerToggle;
-    private NavigationView navigationView;
-    private Toolbar toolbar;
     private RecyclerView recyclerView;
     private ArrayList<UserLawyer> mUsers;
 
@@ -60,6 +57,9 @@ public class HomeClient extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_client);
+
+        // make activity hide the keyboard everytime the activty starts
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         // set up toolabr display
         Toolbar toolbar = findViewById(R.id.toolbar);
