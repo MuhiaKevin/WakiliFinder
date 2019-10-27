@@ -263,8 +263,17 @@ public class MessageActivity extends AppCompatActivity {
 
     // set menu layout on the toolbar
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
+        intent = getIntent();
+        String user = intent.getStringExtra("user");
+
+        // if not logged in as lawyer then do not show the menu otherwise show
+        if (user.equals("client")){
+            getMenuInflater().inflate(R.menu.main_menu, menu);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 
@@ -278,7 +287,6 @@ public class MessageActivity extends AppCompatActivity {
             case  R.id.pay:
 //                Intent i = new Intent(getApplicationContext(),PayLawyer.class);
 //                startActivity(i);
-
                 Toast.makeText(this, "Do you want to pay lawyer", Toast.LENGTH_SHORT).show();
                 return true;
 
