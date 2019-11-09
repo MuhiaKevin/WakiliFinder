@@ -105,7 +105,6 @@ public class HomeLawyer extends AppCompatActivity {
                 // viewPagerAdapter.addFragment(new UsersFragment(), "Users");
                 viewPagerAdapter.addFragment(new AppointmentsFragment(), "Appointments");
                 viewPagerAdapter.addFragment(new ProfileFragment(), "Profile");
-
                 viewPager.setAdapter(viewPagerAdapter);
 
                 tabLayout.setupWithViewPager(viewPager);
