@@ -56,6 +56,10 @@ dependencies {
     // Braintree Drop in
     implementation 'com.braintreepayments.api:drop-in:3.7.1'
 
+    // reverse geocoding
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+
 
 }
 
