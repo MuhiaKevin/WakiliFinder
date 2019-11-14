@@ -38,6 +38,9 @@
         <activity android:name=".MessageActivity" />
         <activity android:name=".HomeLawyer"/>
         <activity android:name=".ClientPay"/>
+        <service
+            android:name=".FetchAddressIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>
