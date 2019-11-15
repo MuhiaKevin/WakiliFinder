@@ -54,6 +54,8 @@ import com.wakilifinder.wakilifinder.Model.UserLawyer;
 import com.wakilifinder.wakilifinder.Model.Userclient;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class HomeClient extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -85,7 +87,7 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
     private EditText search_users;
     private CircleImageView profile_image;
     private TextView username;
-
+    private TextView address;
 
 
 
@@ -101,10 +103,11 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
-        fetchAddressButtonHandler();
+
 
         profile_image = findViewById(R.id.profile_image);
         username = findViewById(R.id.username);
+        address =  findViewById(R.id.adddress_name);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -114,10 +117,12 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
+
         locationRequest = new LocationRequest();
         locationRequest.setInterval(10 * 1000);
         locationRequest.setFastestInterval(5 * 1000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        fetchAddressButtonHandler();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child("Clients").child(firebaseUser.getUid());
@@ -219,7 +224,7 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
         myLatitude = location.getLatitude();
         myLongitude = location.getLongitude();
         // show
-//        Toast.makeText(getApplicationContext(), "Latitude  : " + String.valueOf(myLatitude) +  "Longitude  : " + String.valueOf(myLongitude)  , Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "Latitude  : " + String.valueOf(myLatitude) +  "Longitude  : " + String.valueOf(myLongitude)  , Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -346,6 +351,8 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
 
     private void displayAddressOutput() {
         // SEND TO LAWYER FRAGMENT
-        Toast.makeText(getApplicationContext(), "Address Found : " + mAddressOutput, Toast.LENGTH_SHORT).show();
+        List<String> list = Arrays.asList(mAddressOutput.split("\\s*,\\s*"));
+        String county  = list.get(1);
+        address.setText(county);
     }
 }
