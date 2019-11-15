@@ -13,6 +13,7 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import static androidx.constraintlayout.widget.Constraints.TAG;
@@ -27,7 +28,7 @@ public class FetchAddressIntentService extends IntentService {
     private static final int SUCCESS_RESULT = 0;
     private static final int FAILURE_RESULT = 1;
     private static final int SUCCESS_RESULT_USING_GOOGLE_MAPS = 2;
-    private static final String PACKAGE_NAME = "com.wakilifinder.reversegeocodertest";
+    private static final String PACKAGE_NAME = "com.wakilifinder.wakilifinder";
     private static final String RECEIVER = PACKAGE_NAME + ".RECEIVER";
     private static final String RESULT_DATA_KEY = PACKAGE_NAME + ".RESULT_DATA_KEY";
     private static final String LOCATION_DATA_EXTRA = PACKAGE_NAME + ".LOCATION_DATA_EXTRA";
