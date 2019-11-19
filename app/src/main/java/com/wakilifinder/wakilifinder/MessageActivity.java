@@ -34,7 +34,9 @@ import com.wakilifinder.wakilifinder.Model.Chat;
 import com.wakilifinder.wakilifinder.Model.UserLawyer;
 import com.wakilifinder.wakilifinder.Model.Userclient;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -348,11 +350,15 @@ public class MessageActivity extends AppCompatActivity implements ExampleDialog.
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         String clientuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
         if (username != null && comment != null){
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("username", username);
             hashMap.put("comment", comment);
             hashMap.put("clientid", clientuid);
+            hashMap.put("date", currentDate);
             reference.child("Users").child("Lawyers").child(userid).child("reviews").child(clientuid).setValue(hashMap);
         }else{
             Toast.makeText(this, "Please Enter a comment", Toast.LENGTH_SHORT).show();
