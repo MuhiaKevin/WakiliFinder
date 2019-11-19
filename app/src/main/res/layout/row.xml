@@ -26,7 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
-            android:textSize="18sp"
             android:layout_toRightOf="@+id/profile_image"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
@@ -39,7 +38,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
-            android:textSize="18sp"
             android:layout_toRightOf="@+id/textusername"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp" />
@@ -53,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="18sp"
             android:textStyle="bold"
             android:text="P105 : " />
 
@@ -75,7 +72,6 @@
             android:layout_toRightOf="@+id/profile_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:text="Practice Number" />

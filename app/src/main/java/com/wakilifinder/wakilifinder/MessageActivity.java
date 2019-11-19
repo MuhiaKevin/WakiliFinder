@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.wakilifinder.wakilifinder.Adapter.MessageAdapter;
+import com.wakilifinder.wakilifinder.Fragments.ExampleDialog;
 import com.wakilifinder.wakilifinder.Model.Chat;
 import com.wakilifinder.wakilifinder.Model.UserLawyer;
 import com.wakilifinder.wakilifinder.Model.Userclient;
@@ -37,7 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MessageActivity extends AppCompatActivity {
+public class MessageActivity extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
 
     CircleImageView profile_image;
     TextView username;
@@ -296,12 +297,20 @@ public class MessageActivity extends AppCompatActivity {
             case  R.id.reviewlawyer:
                 // show pop up and save in firebase
                 // saveReviewolawyer()
+                openDialog();
 
                 Toast.makeText(this, "Review lawyer", Toast.LENGTH_SHORT).show();
                 return true;
         }
 
         return false;
+    }
+
+    // dialog box where client leaves review of lawyer
+    private void openDialog() {
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+
     }
 
     // read message to the recyclerview
@@ -334,4 +343,21 @@ public class MessageActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void applyTexts(String username, String comment) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        String clientuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        if (username != null && comment != null){
+            HashMap<String, Object> hashMap = new HashMap<>();
+            hashMap.put("username", username);
+            hashMap.put("comment", comment);
+            hashMap.put("clientid", clientuid);
+            reference.child("Users").child("Lawyers").child(userid).child("reviews").child(clientuid).setValue(hashMap);
+        }else{
+            Toast.makeText(this, "Please Enter a comment", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
 }
