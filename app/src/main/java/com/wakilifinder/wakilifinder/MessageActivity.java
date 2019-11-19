@@ -297,11 +297,9 @@ public class MessageActivity extends AppCompatActivity implements ExampleDialog.
 
             // pop up to let client leave a lawyers review lawyer button
             case  R.id.reviewlawyer:
-                // show pop up and save in firebase
                 // saveReviewolawyer()
                 openDialog();
 
-                Toast.makeText(this, "Review lawyer", Toast.LENGTH_SHORT).show();
                 return true;
         }
 
@@ -353,7 +351,7 @@ public class MessageActivity extends AppCompatActivity implements ExampleDialog.
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
-        if (username != null && comment != null){
+        if (!username.isEmpty()  && !comment.isEmpty()){
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("username", username);
             hashMap.put("comment", comment);
