@@ -96,7 +96,7 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_client);
 
-        // make activity hide the keyboard everytime the activty starts
+        // make activity hide the keyboard every time the activity starts
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         // set up toolabr display
@@ -121,7 +121,7 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
         locationRequest = new LocationRequest();
         locationRequest.setInterval(10 * 1000);
         locationRequest.setFastestInterval(5 * 1000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setPriority(LocationRequest.PRIORITY_LOW_POWER); // PRIORITY_LOW_POWER or PRIORITY_HIGH_ACCURACY
         fetchAddressButtonHandler();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -341,7 +341,7 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
             displayAddressOutput();
 
             if (resultCode == SUCCESS_RESULT) {
-                Toast.makeText(getApplicationContext(), "Address Found", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Address Found", Toast.LENGTH_SHORT).show();
             } else if (resultCode == SUCCESS_RESULT_USING_GOOGLE_MAPS) {
                 Toast.makeText(getApplicationContext(), "Address Found Using Google Maps API", Toast.LENGTH_SHORT).show();
             }
@@ -350,9 +350,18 @@ public class HomeClient extends AppCompatActivity implements GoogleApiClient.Con
     }
 
     private void displayAddressOutput() {
-        // SEND TO LAWYER FRAGMENT
+
         List<String> list = Arrays.asList(mAddressOutput.split("\\s*,\\s*"));
         String county  = list.get(1);
         address.setText(county);
+
+        // SEND TO LAWYER FRAGMENT
+        Bundle data = new Bundle();
+        data.putString("location", county);
+
+        // set Fragmentclass Arguments
+        LawyersFragment lawyersFragment = new LawyersFragment();
+        lawyersFragment.setArguments(data);
+
     }
 }

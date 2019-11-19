@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,11 +37,22 @@ public class LawyersFragment extends Fragment {
     private List<UserLawyer> mUsers;
     private UserLawyerAdapter userLawyerAdapter;
     private EditText search_users;
+    String location;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_lawyers, container, false);
+
+
+        // get location from Homeclient activity
+
+        if (getArguments() != null) {
+            location = getArguments().getString("location");
+        }
+        Toast.makeText(getActivity(), location, Toast.LENGTH_SHORT).show();
+
+
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
