@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wakilifinder.wakilifinder">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- android:theme="@style/Theme.AppCompat.NoActionBar"> -->
-
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- android:theme="@style/Theme.AppCompat.NoActionBar"> -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -17,6 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".EditTaskDesk"></activity>
+        <activity android:name=".NewTaskAct" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,17 +29,16 @@
         <activity android:name=".ClientSignup" />
         <activity android:name=".HomeClient" />
         <activity android:name=".LawyerLogin" />
-
-
         <activity
             android:name=".LawyerSignup"
             android:label="@string/title_activity_lawyer_signup2_maps" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".HomeLawyer"/>
-        <activity android:name=".ClientPay"/>
+        <activity android:name=".HomeLawyer" />
+        <activity android:name=".ClientPay" />
+
         <service
             android:name=".FetchAddressIntentService"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>
