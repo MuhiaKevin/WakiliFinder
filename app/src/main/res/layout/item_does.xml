@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/titledoes"
             android:layout_marginTop="19dp"
-            android:textSize="22sp"
+            android:textSize="15sp"
             android:textColor="#000C5D"
             android:text="Buy whiskas"
             android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/descdoes"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:textColor="#ADADAD"
             android:layout_marginTop="8dp"
             android:text="Nearly market good to"
@@ -35,12 +35,12 @@
 
     <LinearLayout
         android:layout_marginTop="30dp"
-        android:layout_width="125dp"
+        android:layout_width="115dp"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/datedoes"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="#F63EA5"
             android:layout_marginTop="8dp"
             android:text="Tomorrow"

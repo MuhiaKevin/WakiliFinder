@@ -30,20 +30,21 @@
                     android:id="@+id/titlepage"
                     android:layout_marginTop="20dp"
                     android:textColor="#FFF"
-                    android:textSize="32sp"
-                    android:text="ToDo List"
+                    android:textSize="28sp"
+                    android:text="Appointments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/subtitlepage"
+                    android:textSize="12sp"
+                    android:textColor="#BAFFFFFF"
+                    android:layout_marginTop="8dp"
+                    android:text="A list of your appointments"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/subtitlepage"
-                    android:textSize="18sp"
-                    android:textColor="#BAFFFFFF"
-                    android:layout_marginTop="8dp"
-                    android:text="List your going ToDo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
             </LinearLayout>
+
             <Button
                 android:id="@+id/btnAddNew"
                 android:layout_marginTop="35dp"
@@ -53,13 +54,13 @@
                 android:textColor="#FFF"
                 android:textAlignment="center"
                 android:background="@drawable/bgbtnnew"
-                android:layout_width="52dp"
-                android:layout_height="52dp" />
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
         </LinearLayout>
 
 
         <View
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:background="@color/colorPrimary"
             android:layout_height="1dp"/>
@@ -69,17 +70,17 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ourdoes"
         android:layout_width="match_parent"
-        android:layout_marginTop="-60dp"
+        android:layout_marginTop="-80dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/endpage"
-        android:textSize="16dp"
+        android:textSize="13dp"
         android:textColor="#BA424242"
         android:layout_marginTop="20dp"
-        android:text="No more To DO"
+        android:text="No appointments"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
